@@ -1,8 +1,38 @@
-#head {
+#heading {
   background-color: yellow;
   color: red;
+  text-align: center;
 }
 
-#child1 {
-  color: red;
+.heading {
+  font-style: italic;
+  text-align: center;
+}
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.logo {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 30rem;
+}
+
+.header {
+  display: flex;
+  background-color: antiquewhite;
+  align-items: center;
+  position: sticky;
+}
+.icon {
+ width: 3rem; 
+}
+.searchBar {
+  font-size: 1.5rem;
+  margin-left: 20rem;
 }
