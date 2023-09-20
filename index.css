@@ -1,12 +1,11 @@
 #heading {
+  border-radius: 1rem;
   background-color: yellow;
   color: red;
-  text-align: center;
 }
 
 .heading {
   font-style: italic;
-  text-align: center;
 }
 /* .container {
   display: flex;
@@ -14,25 +13,73 @@
   align-items: center;
 } */
 
-.logo {
+/* .logo {
   color: #fff;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   margin-right: 30rem;
-}
+} */
 
 .header {
   display: flex;
   background-color: antiquewhite;
-  align-items: center;
-  position: sticky;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
 }
+
+.NavItems > ul {
+  display: flex;
+}
+.NavItems > ul > li {
+  padding: 0rem 2rem;
+  list-style-type: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.NavItems > ul > li:hover {
+  border-bottom: 4px solid #fff;
+  transition: all 0.2s ease-out;
+}
+
 .icon {
  width: 3rem; 
 }
 .searchBar {
   font-size: 1.5rem;
-  margin-left: 20rem;
+}
+.body {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+.searchItem {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cardInfo {
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 15rem;
+}
+.cardInfo:hover {
+  cursor: pointer;
+  border-radius: 1rem;
+  border: 0.1rem solid rgb(232, 232, 232);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+.foodImage {
+  width: 100%;
+  border-radius: 1rem;
 }
