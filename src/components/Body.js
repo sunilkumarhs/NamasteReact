@@ -7,12 +7,19 @@ const Body = () => {
   const [searchRes, setSearchRes] = useState("");
 
   useEffect(() => {
-    console.log("useEffect Called");
     fetchApiData();
   }, []);
 
   const fetchApiData = async () => {
-    // const data = await fetch();
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0169992&lng=77.7044335&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const jsonData = await data.json();
+    setRestaurantList(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
   return (
@@ -22,7 +29,7 @@ const Body = () => {
           className="tRated-btn"
           onClick={() => {
             const filteredList = restaurantList.filter(
-              (res) => res.data.avgRating > 4
+              (res) => res.info.avgRating > 4
             );
             setRestaurantList(filteredList);
           }}
@@ -42,7 +49,7 @@ const Body = () => {
             className="search-btn"
             onClick={() => {
               const filterRes = restaurantList.filter(
-                (res) => res.data.name.toLowerCase() === searchRes.toLowerCase()
+                (res) => res.info.name.toLowerCase() === searchRes.toLowerCase()
               );
               setRestaurantList(filterRes);
             }}
@@ -53,7 +60,7 @@ const Body = () => {
       </div>
       <div className="cardContainer">
         {restaurantList.map((restaurant) => (
-          <ResCards key={restaurant.data.id} resData={restaurant} />
+          <ResCards key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
     </div>

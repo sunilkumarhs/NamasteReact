@@ -1,7 +1,7 @@
 const resList = [
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "129855",
       name: "Vaishali Vadapav",
@@ -12,8 +12,8 @@ const resList = [
       cloudinaryImageId: "v96xusgxtjhnbiwuwlfy",
       cuisines: ["Maharashtrian", "Street Food", "Chaat"],
       tags: [],
-      costForTwo: 10000,
-      costForTwoString: "₹100 FOR TWO",
+      costForTwos: 10000,
+      costForTwo: "₹100 FOR TWO",
       deliveryTime: 12,
       minDeliveryTime: 12,
       maxDeliveryTime: 12,
@@ -103,7 +103,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "100721",
       name: "McDonald's",
@@ -114,8 +114,8 @@ const resList = [
       cloudinaryImageId: "ee5f8e06b300efc07c9fe3f4df40dfc4",
       cuisines: ["Burgers", "Beverages", "Cafe", "Desserts"],
       tags: [],
-      costForTwo: 40000,
-      costForTwoString: "₹400 FOR TWO",
+      costForTwos: 40000,
+      costForTwo: "₹400 FOR TWO",
       deliveryTime: 19,
       minDeliveryTime: 19,
       maxDeliveryTime: 19,
@@ -205,7 +205,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "693081",
       name: "Theobroma",
@@ -216,8 +216,8 @@ const resList = [
       cloudinaryImageId: "3adf0496f9233061caeb2842303a5668",
       cuisines: ["Desserts"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 24,
       minDeliveryTime: 24,
       maxDeliveryTime: 24,
@@ -313,7 +313,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "496583",
       name: "La Pino'z Pizza",
@@ -324,8 +324,8 @@ const resList = [
       cloudinaryImageId: "dz9l9upbnuufgvensibe",
       cuisines: ["Pizzas", "Pastas", "Italian", "Desserts", "Beverages"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 23,
       minDeliveryTime: 23,
       maxDeliveryTime: 23,
@@ -415,7 +415,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "93694",
       name: "New Janta Dairy",
@@ -426,8 +426,8 @@ const resList = [
       cloudinaryImageId: "mstdherryaqj9wj4qkyo",
       cuisines: ["Desserts"],
       tags: [],
-      costForTwo: 20000,
-      costForTwoString: "₹200 FOR TWO",
+      costForTwos: 20000,
+      costForTwo: "₹200 FOR TWO",
       deliveryTime: 14,
       minDeliveryTime: 14,
       maxDeliveryTime: 14,
@@ -511,7 +511,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "401459",
       name: "Radhe Dhokla",
@@ -522,8 +522,8 @@ const resList = [
       cloudinaryImageId: "27947ad42435b18fc7d1f127e841748a",
       cuisines: ["Chinese", "North Indian", "Biryani"],
       tags: [],
-      costForTwo: 20000,
-      costForTwoString: "₹200 FOR TWO",
+      costForTwos: 20000,
+      costForTwo: "₹200 FOR TWO",
       deliveryTime: 18,
       minDeliveryTime: 18,
       maxDeliveryTime: 18,
@@ -613,7 +613,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "13342342s179",
       name: "Ajay's",
@@ -624,8 +624,8 @@ const resList = [
       cloudinaryImageId: "bjt2cvc5afuyhj0shzjh",
       cuisines: ["Burgers"],
       tags: [],
-      costForTwo: 15000,
-      costForTwoString: "₹150 FOR TWO",
+      costForTwos: 15000,
+      costForTwo: "₹150 FOR TWO",
       deliveryTime: 17,
       minDeliveryTime: 17,
       maxDeliveryTime: 17,
@@ -709,7 +709,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "67dwqqe9858",
       name: "Cowboys Fastfood\t",
@@ -720,8 +720,8 @@ const resList = [
       cloudinaryImageId: "cfe5a6b2c186e42811f595e7ebfd7331",
       cuisines: ["Pizzas", "Fast Food", "Snacks"],
       tags: [],
-      costForTwo: 40000,
-      costForTwoString: "₹400 FOR TWO",
+      costForTwos: 40000,
+      costForTwo: "₹400 FOR TWO",
       deliveryTime: 18,
       minDeliveryTime: 18,
       maxDeliveryTime: 18,
@@ -805,7 +805,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "127342e596",
       name: "Sabir Chicken",
@@ -816,8 +816,8 @@ const resList = [
       cloudinaryImageId: "kilrdjqt8chduasii5ni",
       cuisines: ["North Indian", "Biryani"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 30,
       minDeliveryTime: 30,
       maxDeliveryTime: 30,
@@ -913,7 +913,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "120werweq19",
       name: "Maakhan Bhog",
@@ -924,8 +924,8 @@ const resList = [
       cloudinaryImageId: "5854d9bc94b578d24f21575b2b0c582b",
       cuisines: ["Desserts"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 15,
       minDeliveryTime: 15,
       maxDeliveryTime: 15,
@@ -1015,7 +1015,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "453trs1118",
       name: "Laziz Pizza",
@@ -1026,8 +1026,8 @@ const resList = [
       cloudinaryImageId: "ntdbvvsk6yog3kxy8ohb",
       cuisines: ["Pizzas", "Burgers", "Snacks", "Pastas", "Fast Food"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 21,
       minDeliveryTime: 21,
       maxDeliveryTime: 21,
@@ -1117,7 +1117,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "12ty985565",
       name: "Vedu Vadapav",
@@ -1128,8 +1128,8 @@ const resList = [
       cloudinaryImageId: "v96xusgxtjhnbiwuwlfy",
       cuisines: ["Maharashtrian", "Street Food", "Chaat"],
       tags: [],
-      costForTwo: 10000,
-      costForTwoString: "₹100 FOR TWO",
+      costForTwos: 10000,
+      costForTwo: "₹100 FOR TWO",
       deliveryTime: 12,
       minDeliveryTime: 12,
       maxDeliveryTime: 12,
@@ -1219,7 +1219,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "4tt675420",
       name: "Bhandari Vishwas Tiffin Corner",
@@ -1230,8 +1230,8 @@ const resList = [
       cloudinaryImageId: "u3xxri5oxhznm8hceuxp",
       cuisines: ["Thalis", "North Indian"],
       tags: [],
-      costForTwo: 20000,
-      costForTwoString: "₹200 FOR TWO",
+      costForTwos: 20000,
+      costForTwo: "₹200 FOR TWO",
       deliveryTime: 21,
       minDeliveryTime: 21,
       maxDeliveryTime: 21,
@@ -1315,7 +1315,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "69ooyutr081",
       name: "Theobroma",
@@ -1326,8 +1326,8 @@ const resList = [
       cloudinaryImageId: "3adf0496f9233061caeb2842303a5668",
       cuisines: ["Desserts"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 24,
       minDeliveryTime: 24,
       maxDeliveryTime: 24,
@@ -1423,7 +1423,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "49rrrew46533",
       name: "La Pino'z Pizza",
@@ -1434,8 +1434,8 @@ const resList = [
       cloudinaryImageId: "dz9l9upbnuufgvensibe",
       cuisines: ["Pizzas", "Pastas", "Italian", "Desserts", "Beverages"],
       tags: [],
-      costForTwo: 30000,
-      costForTwoString: "₹300 FOR TWO",
+      costForTwos: 30000,
+      costForTwo: "₹300 FOR TWO",
       deliveryTime: 23,
       minDeliveryTime: 23,
       maxDeliveryTime: 23,
@@ -1525,7 +1525,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "936vdfw4",
       name: "New Janta Dairy",
@@ -1536,8 +1536,8 @@ const resList = [
       cloudinaryImageId: "mstdherryaqj9wj4qkyo",
       cuisines: ["Desserts"],
       tags: [],
-      costForTwo: 20000,
-      costForTwoString: "₹200 FOR TWO",
+      costForTwos: 20000,
+      costForTwo: "₹200 FOR TWO",
       deliveryTime: 14,
       minDeliveryTime: 14,
       maxDeliveryTime: 14,
@@ -1621,7 +1621,7 @@ const resList = [
   },
   {
     type: "restaurant",
-    data: {
+    info: {
       type: "F",
       id: "4032fabn459",
       name: "Radhe Dhokla",
@@ -1632,8 +1632,8 @@ const resList = [
       cloudinaryImageId: "27947ad42435b18fc7d1f127e841748a",
       cuisines: ["Chinese", "North Indian", "Biryani"],
       tags: [],
-      costForTwo: 20000,
-      costForTwoString: "₹200 FOR TWO",
+      costForTwos: 20000,
+      costForTwo: "₹200 FOR TWO",
       deliveryTime: 18,
       minDeliveryTime: 18,
       maxDeliveryTime: 18,
