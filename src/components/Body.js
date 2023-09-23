@@ -1,9 +1,20 @@
 import resList from "../utils/mockData";
 import ResCards from "./RestaurentCards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState(resList);
+  const [searchRes, setSearchRes] = useState("");
+
+  useEffect(() => {
+    console.log("useEffect Called");
+    fetchApiData();
+  }, []);
+
+  const fetchApiData = async () => {
+    // const data = await fetch();
+  };
+
   return (
     <div className="body">
       <div className="searchItem">
@@ -18,7 +29,27 @@ const Body = () => {
         >
           Top Rated
         </button>
-        <input type="search" className="searchBar" placeholder="Search here" />
+        <div>
+          <input
+            type="search"
+            className="searchBar"
+            placeholder="Search Restaurants"
+            value={searchRes}
+            onChange={(e) => setSearchRes(e.target.value)}
+          />
+          <button
+            type="button"
+            className="search-btn"
+            onClick={() => {
+              const filterRes = restaurantList.filter(
+                (res) => res.data.name.toLowerCase() === searchRes.toLowerCase()
+              );
+              setRestaurantList(filterRes);
+            }}
+          >
+            Search
+          </button>
+        </div>
       </div>
       <div className="cardContainer">
         {restaurantList.map((restaurant) => (
