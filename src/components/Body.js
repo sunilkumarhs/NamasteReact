@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState("");
+  const [realRestaurantList, setRealRestaurantList] = useState([]);
+  const [restaurantList, setRestaurantList] = useState([]);
   const [searchRes, setSearchRes] = useState("");
 
   useEffect(() => {
@@ -17,17 +18,19 @@ const Body = () => {
     );
 
     const jsonData = await data.json();
+    setRealRestaurantList(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
     setRestaurantList(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
 
-  if (restaurantList.length == 0) {
-    return <ShimmerUI />;
-  }
-
-  return (
+  return restaurantList.length == 0 ? (
+    <ShimmerUI />
+  ) : (
     <div className="body">
       <div className="searchItem">
         <button
@@ -53,9 +56,8 @@ const Body = () => {
             type="button"
             className="search-btn"
             onClick={() => {
-              const filterRes = restaurantList.filter(
-                (res) =>
-                  res?.info?.name.toLowerCase() === searchRes.toLowerCase()
+              const filterRes = realRestaurantList.filter((res) =>
+                res?.info?.name.toLowerCase().includes(searchRes.toLowerCase())
               );
               setRestaurantList(filterRes);
             }}
