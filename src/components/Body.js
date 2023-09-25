@@ -1,9 +1,10 @@
-import resList from "../utils/mockData";
+// import resList from "../utils/mockData";
 import ResCards from "./RestaurentCards";
 import { useState, useEffect } from "react";
+import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState(resList);
+  const [restaurantList, setRestaurantList] = useState("");
   const [searchRes, setSearchRes] = useState("");
 
   useEffect(() => {
@@ -22,6 +23,10 @@ const Body = () => {
     );
   };
 
+  if (restaurantList.length == 0) {
+    return <ShimmerUI />;
+  }
+
   return (
     <div className="body">
       <div className="searchItem">
@@ -29,7 +34,7 @@ const Body = () => {
           className="tRated-btn"
           onClick={() => {
             const filteredList = restaurantList.filter(
-              (res) => res.info.avgRating > 4
+              (res) => res?.info?.avgRating > 4
             );
             setRestaurantList(filteredList);
           }}
@@ -49,7 +54,8 @@ const Body = () => {
             className="search-btn"
             onClick={() => {
               const filterRes = restaurantList.filter(
-                (res) => res.info.name.toLowerCase() === searchRes.toLowerCase()
+                (res) =>
+                  res?.info?.name.toLowerCase() === searchRes.toLowerCase()
               );
               setRestaurantList(filterRes);
             }}
@@ -59,8 +65,8 @@ const Body = () => {
         </div>
       </div>
       <div className="cardContainer">
-        {restaurantList.map((restaurant) => (
-          <ResCards key={restaurant.info.id} resData={restaurant} />
+        {restaurantList?.map((restaurant) => (
+          <ResCards key={restaurant?.info?.id} resData={restaurant} />
         ))}
       </div>
     </div>
