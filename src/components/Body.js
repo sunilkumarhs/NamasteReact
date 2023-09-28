@@ -2,6 +2,7 @@
 import ResCards from "./RestaurentCards";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
+import { RES_LINK } from "../utils/constants";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
@@ -13,11 +14,10 @@ const Body = () => {
   }, []);
 
   const fetchApiData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0169992&lng=77.7044335&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RES_LINK);
 
     const jsonData = await data.json();
+    console.log(jsonData);
     setRealRestaurantList(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
