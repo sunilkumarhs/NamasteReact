@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
-import { RESMENU_LINK } from "../utils/constants";
+import { FOOD_IMG, RESMENU_LINK } from "../utils/constants";
 import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
@@ -36,7 +36,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menuContainer">
-      <hr style={{ border: "0.5px dashed lightGray" }} />
+      <hr style={{ border: "0.5px dashed lightGray", marginBottom: "1rem" }} />
       <button
         style={{
           borderRadius: "1rem",
@@ -136,12 +136,64 @@ const RestaurantMenu = () => {
             const item = itemcard?.card?.card;
             return (
               <div key={item.title}>
-                <h2>{item.title}</h2>
-                <ul>
-                  {item?.itemCards?.map((list) => (
-                    <li key={list.card.info.id}>{list?.card?.info?.name}</li>
-                  ))}
-                </ul>
+                <h2 style={{ paddingBottom: "1rem" }}>{item.title}</h2>
+                {item?.itemCards?.map((list) => {
+                  const listItem = list?.card?.info;
+                  return (
+                    <div key={listItem.id}>
+                      <button
+                        style={{
+                          borderRadius: "1rem",
+                          border: "1px dashed lightGray",
+                          float: "right",
+                          backgroundColor: "white",
+                        }}
+                      >
+                        {" "}
+                        {listItem.imageId ? (
+                          <img
+                            alt="Food Image"
+                            src={FOOD_IMG + listItem.imageId}
+                            style={{
+                              width: "100%",
+                              height: "7rem",
+                              borderRadius: "1rem",
+                              marginRight: "1rem",
+                            }}
+                          />
+                        ) : (
+                          "FOOD IMAGE"
+                        )}
+                      </button>
+                      <p style={{ fontSize: "1rem" }}>
+                        {listItem.itemAttribute.vegClassifier}
+                      </p>
+                      <p style={{ fontSize: "1.3rem" }}>
+                        <b>{listItem.name}</b>
+                      </p>
+                      <p style={{ fontSize: "1.3rem" }}>
+                        <b>
+                          ₹{listItem.price / 100 || listItem.defaultPrice / 100}
+                        </b>
+                      </p>
+                      <p style={{ color: "gray" }}>{listItem.description}</p>
+                      <hr
+                        style={{
+                          border: "0.5px dashed lightGray",
+                          marginTop: "2rem",
+                          marginBottom: "2rem",
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+                <hr
+                  style={{
+                    border: "1rem dashed lightGray",
+                    marginTop: "2rem",
+                    marginBottom: "2rem",
+                  }}
+                />
               </div>
             );
           }

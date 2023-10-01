@@ -6,3 +6,6 @@ export const RES_LINK =
 
 export const RESMENU_LINK =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0169992&lng=77.7044335&restaurantId=";
+
+export const FOOD_IMG =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/";

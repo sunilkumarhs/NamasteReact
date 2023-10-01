@@ -71,6 +71,7 @@ const Body = () => {
           <Link
             to={"/restaurantMenu/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
+            style={{ textDecoration: "none", color: "black" }}
           >
             <ResCards resData={restaurant} />{" "}
           </Link>
