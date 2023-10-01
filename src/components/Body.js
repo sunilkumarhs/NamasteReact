@@ -3,6 +3,7 @@ import ResCards from "./RestaurentCards";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
@@ -15,7 +16,6 @@ const Body = () => {
 
   const fetchApiData = async () => {
     const data = await fetch(RES_LINK);
-
     const jsonData = await data.json();
     console.log(jsonData);
     setRealRestaurantList(
@@ -68,7 +68,12 @@ const Body = () => {
       </div>
       <div className="cardContainer">
         {restaurantList?.map((restaurant) => (
-          <ResCards key={restaurant?.info?.id} resData={restaurant} />
+          <Link
+            to={"/restaurantMenu/" + restaurant?.info?.id}
+            key={restaurant?.info?.id}
+          >
+            <ResCards resData={restaurant} />{" "}
+          </Link>
         ))}
       </div>
     </div>
