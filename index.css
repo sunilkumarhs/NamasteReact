@@ -124,4 +124,9 @@
   border: 0.2rem solid black;
 border-radius: 1rem;
 padding: 1rem;
+margin: 1rem;
+}
+.userCardContainer {
+  display: flex;
+  flex-wrap: wrap;
 }

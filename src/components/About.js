@@ -8,7 +8,7 @@ const About = () => {
         <h1>About-Us</h1>
         <h3>Welcome to About-Us page using react-router-dom</h3>
       </div>
-      <div>
+      <div className="userCardContainer">
         <User name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
         <UserClass name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
       </div>
