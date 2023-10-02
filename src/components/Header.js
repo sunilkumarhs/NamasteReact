@@ -17,13 +17,25 @@ const Header = () => {
       <div className="NavItems">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link
+              to="/about"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link
+              to="/contact"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              Contact Us
+            </Link>
           </li>
           <li>Cart</li>
           <button

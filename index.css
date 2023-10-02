@@ -120,3 +120,8 @@
 .menuContainer {
   margin: 2rem 16rem;
 }
+.user {
+  border: 0.2rem solid black;
+border-radius: 1rem;
+padding: 1rem;
+}
