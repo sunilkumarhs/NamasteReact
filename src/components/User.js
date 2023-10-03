@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const User = (props) => {
+  console.log("c1 c called");
   const [count] = useState(0);
   const [count2] = useState(1);
   return (
