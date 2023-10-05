@@ -32,7 +32,7 @@ const RestaurantMenu = () => {
   } = resMenuData?.cards[0]?.card?.card?.info;
   const cardItemsList =
     resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  console.log(cardItemsList);
+  // console.log(cardItemsList);
 
   return (
     <div className="menuContainer">

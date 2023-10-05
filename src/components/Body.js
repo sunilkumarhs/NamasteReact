@@ -17,7 +17,7 @@ const Body = () => {
   const fetchApiData = async () => {
     const data = await fetch(RES_LINK);
     const jsonData = await data.json();
-    console.log(jsonData);
+    // console.log(jsonData);
     setRealRestaurantList(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants

@@ -19,16 +19,12 @@ import UserClass from "./UserClass";
 
 class About extends React.Component {
   constructor(props) {
-    console.log("Parent Constructor is called");
     super(props);
   }
 
-  componentDidMount() {
-    console.log("Parent ComponentDidMount is called");
-  }
+  componentDidMount() {}
 
   render() {
-    console.log("Parent Render is called");
     return (
       <>
         <div style={{ textAlign: "center" }}>
