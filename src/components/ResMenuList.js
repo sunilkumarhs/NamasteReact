@@ -2,9 +2,6 @@ import { FOOD_IMG } from "../utils/constants";
 
 const ResMenuList = (props) => {
   const { resList } = props;
-  // return(
-  //     <div>
-  console.log(resList);
   if (resList.card.card.itemCards) {
     const item = resList?.card?.card;
     return (
@@ -68,8 +65,6 @@ const ResMenuList = (props) => {
       </div>
     );
   }
-  //       </div>
-  // )
 };
 
 export default ResMenuList;

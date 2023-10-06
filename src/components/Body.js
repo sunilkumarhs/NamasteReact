@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
 import { Link } from "react-router-dom";
+// import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
@@ -27,6 +28,11 @@ const Body = () => {
         ?.restaurants
     );
   };
+
+  // const onlineStatus = useOnlineStatus();
+  // console.log(onlineStatus);
+  // if (onlineStatus === false)
+  //   return <h1>Your are Offline, please check your internet connection!</h1>;
 
   return restaurantList.length == 0 ? (
     <ShimmerUI />

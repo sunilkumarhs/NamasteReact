@@ -23,7 +23,8 @@ const RestaurantMenu = () => {
   } = resMenuData?.cards[0]?.card?.card?.info;
   const cardItemsList =
     resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  // console.log(cardItemsList);
+  // console.log(cardItemsList[0]);
+  let i = cardItemsList.length;
 
   return (
     <div className="menuContainer">
@@ -123,7 +124,7 @@ const RestaurantMenu = () => {
       <hr style={{ border: "0.5px dashed lightGray" }} />
       <div>
         {cardItemsList?.map((itemcard) => (
-          <ResMenuList key={itemcard?.card?.card?.id} resList={itemcard} />
+          <ResMenuList key={i--} resList={itemcard} />
         ))}
       </div>
     </div>

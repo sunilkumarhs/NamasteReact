@@ -1,9 +1,11 @@
 import { useState } from "react";
 import picture from "../../images/icon.png";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [loginCredential, setLoginCredential] = useState("SignIn");
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header">
       <div className="logo">
@@ -16,6 +18,21 @@ const Header = () => {
       </div>
       <div className="NavItems">
         <ul>
+          <li>
+            <button
+              style={{
+                backgroundColor: `${
+                  onlineStatus === false ? "red" : "lightGreen"
+                }`,
+                padding: "0.5rem",
+                borderRadius: "2rem",
+                border: "none",
+              }}
+              className="tooltip"
+            >
+              <span class="tooltiptext">Online Status</span>
+            </button>
+          </li>
           <li>
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
               Home
@@ -40,13 +57,17 @@ const Header = () => {
           <li>Cart</li>
           <button
             className="sign-btn"
+            style={{
+              backgroundColor: `${
+                loginCredential === "SignIn" ? "lightGreen" : "red"
+              }`,
+            }}
             onClick={() => {
               loginCredential === "SignIn"
                 ? setLoginCredential("SignOut")
                 : setLoginCredential("SignIn");
             }}
           >
-            {/* {loginCredential === "SignIn" ? style={{backgroundColor: "green"}} : style={{backgroundColor: "red"}}} */}
             {loginCredential}
           </button>
         </ul>
