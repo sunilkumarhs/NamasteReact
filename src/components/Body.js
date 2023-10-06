@@ -1,5 +1,5 @@
 // import resList from "../utils/mockData";
-import ResCards from "./RestaurentCards";
+import RestaurentCards from "./RestaurentCards";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
@@ -73,7 +73,7 @@ const Body = () => {
             key={restaurant?.info?.id}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <ResCards resData={restaurant} />{" "}
+            <RestaurentCards resData={restaurant} />{" "}
           </Link>
         ))}
       </div>

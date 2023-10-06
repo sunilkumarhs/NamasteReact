@@ -1,5 +1,5 @@
 import { CDN_IMGLINK } from "../utils/constants";
-const ResCards = (props) => {
+const RestaurentCards = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
@@ -19,4 +19,4 @@ const ResCards = (props) => {
   );
 };
 
-export default ResCards;
+export default RestaurentCards;
