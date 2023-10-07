@@ -5,12 +5,27 @@ const ResMenuList = (props) => {
   if (resList.card.card.itemCards) {
     const item = resList?.card?.card;
     return (
-      <div>
+      <div
+        style={{
+          backgroundColor: "#eee",
+          padding: "0.5rem",
+          marginBottom: "1rem",
+        }}
+      >
         <h2 style={{ paddingBottom: "1rem" }}>{item.title}</h2>
         {item?.itemCards?.map((list) => {
           const listItem = list?.card?.info;
           return (
-            <div key={listItem.id}>
+            <div
+              key={listItem.id}
+              style={{
+                backgroundColor: "white",
+                margin: "0.5rem",
+                padding: "0.5rem",
+                border: "none",
+                borderRadius: "1rem",
+              }}
+            >
               <button
                 style={{
                   borderRadius: "1rem",
@@ -45,23 +60,23 @@ const ResMenuList = (props) => {
                 <b>₹{listItem.price / 100 || listItem.defaultPrice / 100}</b>
               </p>
               <p style={{ color: "gray" }}>{listItem.description}</p>
-              <hr
+              {/* <hr
                 style={{
                   border: "0.5px dashed lightGray",
                   marginTop: "2rem",
                   marginBottom: "2rem",
                 }}
-              />
+              /> */}
             </div>
           );
         })}
-        <hr
+        {/* <hr
           style={{
             border: "1rem dashed lightGray",
             marginTop: "2rem",
             marginBottom: "2rem",
           }}
-        />
+        /> */}
       </div>
     );
   }

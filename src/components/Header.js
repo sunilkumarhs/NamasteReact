@@ -30,7 +30,7 @@ const Header = () => {
               }}
               className="tooltip"
             >
-              <span class="tooltiptext">Online Status</span>
+              <span className="tooltiptext">Online Status</span>
             </button>
           </li>
           <li>
@@ -54,7 +54,11 @@ const Header = () => {
               Contact Us
             </Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
+              Cart
+            </Link>
+          </li>
           <button
             className="sign-btn"
             style={{
