@@ -1,4 +1,7 @@
-#heading {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* #heading {
   border-radius: 1rem;
   background-color: yellow;
   color: red;
@@ -7,20 +10,6 @@
 .heading {
   font-style: italic;
 }
-/* .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .logo {
-  color: #fff;
-  justify-self: start;
-  margin-left: 20px;
-  cursor: pointer;
-  text-decoration: none;
-  margin-right: 30rem;
-} */
 
 .header {
   display: flex;
@@ -151,7 +140,7 @@ margin: 1rem;
   border-radius: 6px;
   padding: 5px 0;
   
-  /* Position the tooltip */
+
   position: absolute;
   z-index: 1;
   width: 120px;
@@ -162,4 +151,4 @@ margin: 1rem;
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-}
+} */
