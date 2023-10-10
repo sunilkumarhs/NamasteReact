@@ -26,11 +26,11 @@ const RestaurantMenu = () => {
   } = resMenuData?.cards[0]?.card?.card?.info;
   const cardItemsList =
     resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  // console.log(cardItemsList[0]);
+  // console.log(cardItemsList);
   let i = cardItemsList.length;
 
   return (
-    <div className=" mx-60 my-4 ">
+    <div className=" mx-60 my-12">
       <hr className=" border-dashed border-2 border-grey-200 mb-4" />
       <button className=" rounded-xl border-dashed border-2 border-gray-400 float-right bg-slate-100 mr-6">
         <p className="text-2xl my-2">
@@ -39,10 +39,10 @@ const RestaurantMenu = () => {
         <hr className="border-dashed border-2 border-gray-400 my-3 mx-2" />
         <p className=" px-2 py-1">{totalRatingsString}</p>
       </button>
-      <h2 className=" font-semibold text-2xl mt-0">{name}</h2>
-      <p className="text-xl my-1 text-gray-400">{cuisines.join(",")}</p>
-      <p className="text-xl my-1 text-gray-400">{areaName}</p>
-      <h3 className=" text-gray-500 pb-2">{feeDetails.message}</h3>
+      <h2 className=" font-semibold text-2xl">{name}</h2>
+      <p className="text-xl my-2 text-gray-400">{cuisines.join(",")}</p>
+      <p className="text-xl text-gray-400">{areaName}</p>
+      <h3 className=" text-gray-500 my-2">{feeDetails.message}</h3>
 
       <hr className=" border-dashed border-2 border-grey-200 mb-1" />
       <div className=" flex">
@@ -84,25 +84,31 @@ const RestaurantMenu = () => {
           </p>
           <div
             className={`${
-              toggle === true ? "bg-green-500" : "bg-gray-200"
-            } md:w-14 md:h-5 w-12 h-6 flex items-center  rounded-md px-1 py-4 cursor-pointer`}
+              toggle === true ? "bg-green-500" : "bg-gray-300"
+            } md:w-12 md:h-5 w-12 h-6 flex items-center  rounded-[0.2rem] px-1 py-[0.8rem] cursor-pointer`}
             onClick={() => {
               setToggle(!toggle);
             }}
           >
             <div
-              className={`${toggle === true ? "bg-green-400" : "bg-white"}
-                "md:w-6 md:h-5 h-5 w-5 rounded-md shadow-md transform duration-300 ease-in-out" +
+              className={`${toggle === true ? "bg-white" : "bg-white"}
+                "md:w-5 md:h-5 h-5 w-5 rounded-[0.2rem] transform duration-300 ease-in-out relative" +
                 ${!toggle ? null : toggleClass}
               `}
-            ></div>
+            >
+              <span
+                className={`${
+                  toggle === true ? "bg-green-700" : "bg-white"
+                } w-[0.7rem] h-[0.7rem] rounded-full absolute mt-[0.3rem] ml-[0.3rem]`}
+              ></span>
+            </div>
           </div>
         </div>
       )}
       <hr className=" border-dashed border-2 border-grey-200 my-2" />
       <div>
         {cardItemsList?.map((itemcard) => (
-          <ResMenuList key={i--} resList={itemcard} />
+          <ResMenuList key={i--} resList={itemcard} tBar={toggle} />
         ))}
       </div>
     </div>
