@@ -17,20 +17,17 @@ const Header = () => {
         </h1>
       </div>
       <div className="">
-        <ul className="flex justify-between px-3 py-3 text-lg cursor-pointer">
-          <li className=" px-2 mx-2">
+        <ul className="flex justify-between px-3 py-3 text-lg cursor-pointer font-semibold">
+          <li className=" px-6 mx-2">
             <button
-              style={{
-                backgroundColor: `${
-                  onlineStatus === false ? "red" : "lightGreen"
-                }`,
-                padding: "0.5rem",
-                borderRadius: "2rem",
-                border: "none",
-              }}
-              className=" hover:visible relative inline-block "
+              className={`${
+                onlineStatus === false ? "bg-red-600" : "bg-green-600"
+              } p-2 rounded-full border-none relative inline-block`}
             >
-              <span className=" invisible hover:visible text-sm w-30 bg-white text-black rounded-2xl px-2 absolute z-10 bottom-full left-1/2 -ml-14 ">
+              <span
+                id="staus"
+                className=" text-sm w-40 text-black rounded-2xl pr-8 absolute z-0 bottom-full left-1/2 -ml-16 bg-transparent"
+              >
                 Online Status
               </span>
             </button>
@@ -40,7 +37,7 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li className=" px-2 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+          <li className=" px-2 py-2 mx-2 hover:text-xl  hover:border-b-4 hover:border-white">
             <Link
               to="/about"
               style={{ textDecoration: "none", color: "black" }}
@@ -62,12 +59,11 @@ const Header = () => {
             </Link>
           </li>
           <button
-            className=" px-4 py-2 mx-2 rounded-xl text-xl hover:bg-red "
-            style={{
-              backgroundColor: `${
-                loginCredential === "SignIn" ? "lightGreen" : "red"
-              }`,
-            }}
+            className={`${
+              loginCredential === "SignIn"
+                ? "bg-green-500 text-amber-300 hover:bg-amber-300 hover:text-green-500 hover:border-green-500 hover:border-2"
+                : "bg-red-500 text-amber-300 hover:bg-amber-300 hover:text-red-500  hover:border-red-500 hover:border-2"
+            } px-4 py-2 mx-2 rounded-full`}
             onClick={() => {
               loginCredential === "SignIn"
                 ? setLoginCredential("SignOut")

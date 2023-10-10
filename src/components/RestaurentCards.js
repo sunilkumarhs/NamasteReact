@@ -4,11 +4,11 @@ const RestaurentCards = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
   return (
-    <div className="cardInfo">
+    <div className=" m-2 p-2 w-60 border-gray-200 border-2 rounded-xl cardInfo">
       <img
         alt="Food Image"
         src={CDN_IMGLINK + cloudinaryImageId}
-        className="foodImage"
+        className=" w-full h-40 rounded-xl"
       />
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
