@@ -2,9 +2,12 @@ import ShimmerUI from "./ShimmerUI";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ResMenuList from "./ResMenuList";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [toggle, setToggle] = useState(false);
+  const toggleClass = " transform translate-x-5";
 
   const resMenuData = useRestaurantMenu(resId);
 
@@ -27,101 +30,76 @@ const RestaurantMenu = () => {
   let i = cardItemsList.length;
 
   return (
-    <div className="menuContainer">
-      <hr style={{ border: "0.5px dashed lightGray", marginBottom: "1rem" }} />
-      <button
-        style={{
-          borderRadius: "1rem",
-          border: "1px dashed lightGray",
-          float: "right",
-          backgroundColor: "white",
-          marginRight: "1.5rem",
-        }}
-      >
-        <p style={{ fontSize: "1.5rem", margin: "0.5rem 0rem" }}>
+    <div className=" mx-60 my-4 ">
+      <hr className=" border-dashed border-2 border-grey-200 mb-4" />
+      <button className=" rounded-xl border-dashed border-2 border-gray-400 float-right bg-slate-100 mr-6">
+        <p className="text-2xl my-2">
           <b>{avgRating}</b>
         </p>
-        <hr
-          style={{ border: "0.5px dashed lightGray", margin: "1.2rem 0.8rem" }}
-        />
-        <p>{totalRatingsString}</p>
+        <hr className="border-dashed border-2 border-gray-400 my-3 mx-2" />
+        <p className=" px-2 py-1">{totalRatingsString}</p>
       </button>
-      <h2 style={{ marginTop: "0rem" }}>{name}</h2>
-      <p
-        style={{
-          fontSize: "1.2rem",
-          margin: "0.4rem 0rem",
-          color: "gray",
-        }}
-      >
-        {cuisines.join(",")}
-      </p>
-      <p style={{ fontSize: "1.2rem", margin: "0rem", color: "gray" }}>
-        {areaName}
-      </p>
-      <h3 style={{ color: "gray" }}>{feeDetails.message}</h3>
+      <h2 className=" font-semibold text-2xl mt-0">{name}</h2>
+      <p className="text-xl my-1 text-gray-400">{cuisines.join(",")}</p>
+      <p className="text-xl my-1 text-gray-400">{areaName}</p>
+      <h3 className=" text-gray-500 pb-2">{feeDetails.message}</h3>
 
-      <hr style={{ border: "0.5px dashed lightGray" }} />
-      <div style={{ display: "flex" }}>
-        <h3 style={{ paddingRight: "3rem", margin: "0.8rem 0rem" }}>
-          {sla.deliveryTime} MINS
-        </h3>
-        <h3 style={{ paddingRight: "3rem", margin: "0.8rem 0rem" }}>
-          {costForTwoMessage}
-        </h3>
+      <hr className=" border-dashed border-2 border-grey-200 mb-1" />
+      <div className=" flex">
+        <h3 className="pr-12 my-3 text-xl">{sla.deliveryTime} MINS</h3>
+        <h3 className="pr-12 my-3 text-xl">{costForTwoMessage}</h3>
       </div>
-      <div style={{ display: "flex", marginBottom: "5rem" }}>
-        <button
-          style={{
-            borderRadius: "1rem",
-            border: "1px dashed Gray",
-            backgroundColor: "white",
-            marginRight: "3rem",
-            marginTop: "0.5rem",
-            padding: "0.5rem 0.5rem",
-          }}
-        >
-          <p style={{ fontSize: "1rem", margin: "0rem" }}>
+      <div className="flex mb-16 ">
+        <button className="rounded-2xl border-dashed border-2 border-gray-400 bg-slate-100 mr-12 mt-2 p-2">
+          <p>
             <b>
               {aggregatedDiscountInfo.descriptionList[0].meta.split("|")[0]}
             </b>
           </p>
           <br />
-          <p style={{ fontSize: "0.8rem", margin: "0rem", color: "gray" }}>
+          <p className="text-xs text-gray-400">
             {aggregatedDiscountInfo.descriptionList[0].meta.split("|")[1]}
           </p>
         </button>
-        <button
-          style={{
-            borderRadius: "1rem",
-            border: "1px dashed Gray",
-            backgroundColor: "white",
-            marginRight: "3rem",
-            marginTop: "0.5rem",
-            padding: "0.5rem 0.5rem",
-          }}
-        >
-          <p style={{ fontSize: "1rem", margin: "0rem" }}>
+        <button className="rounded-2xl border-dashed border-2 border-gray-400 bg-slate-100 mr-12 mt-2 p-2">
+          <p>
             <b>
               {aggregatedDiscountInfo.descriptionList[1].meta.split("|")[0]}
             </b>
           </p>
           <br />
-          <p style={{ fontSize: "0.8rem", margin: "0rem", color: "gray" }}>
+          <p className="text-xs text-gray-400">
             {aggregatedDiscountInfo.descriptionList[1].meta.split("|")[1]}
           </p>
         </button>
       </div>
       {"veg" in resMenuData?.cards[0]?.card?.card?.info ? (
-        <p style={{ fontSize: "1.3rem" }}>
+        <p className="text-2xl text-green-600">
           <b>Pure Veg</b>
         </p>
       ) : (
-        <p style={{ fontSize: "1.3rem" }}>
-          <b>Veg Only</b>
-        </p>
+        <div className="flex mb-4">
+          <p className="text-xl mx-4">
+            <b>Veg Only</b>
+          </p>
+          <div
+            className={`${
+              toggle === true ? "bg-green-500" : "bg-gray-200"
+            } md:w-14 md:h-5 w-12 h-6 flex items-center  rounded-md px-1 py-4 cursor-pointer`}
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          >
+            <div
+              className={`${toggle === true ? "bg-green-400" : "bg-white"}
+                "md:w-6 md:h-5 h-5 w-5 rounded-md shadow-md transform duration-300 ease-in-out" +
+                ${!toggle ? null : toggleClass}
+              `}
+            ></div>
+          </div>
+        </div>
       )}
-      <hr style={{ border: "0.5px dashed lightGray" }} />
+      <hr className=" border-dashed border-2 border-grey-200 my-2" />
       <div>
         {cardItemsList?.map((itemcard) => (
           <ResMenuList key={i--} resList={itemcard} />

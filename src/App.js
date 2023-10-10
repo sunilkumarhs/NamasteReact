@@ -15,7 +15,7 @@ const Cart = lazy(() => import("./components/Cart"));
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="">
       <Header />
       <Outlet />
     </div>

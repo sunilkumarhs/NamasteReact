@@ -5,78 +5,46 @@ const ResMenuList = (props) => {
   if (resList.card.card.itemCards) {
     const item = resList?.card?.card;
     return (
-      <div
-        style={{
-          backgroundColor: "#eee",
-          padding: "0.5rem",
-          marginBottom: "1rem",
-        }}
-      >
-        <h2 style={{ paddingBottom: "1rem" }}>{item.title}</h2>
+      <div className=" bg-slate-400 p-2 mb-4">
+        <h2 className="font-bold text-xl mx-4">{item.title}</h2>
         {item?.itemCards?.map((list) => {
           const listItem = list?.card?.info;
           return (
             <div
               key={listItem.id}
-              style={{
-                backgroundColor: "white",
-                margin: "0.5rem",
-                padding: "0.5rem",
-                border: "none",
-                borderRadius: "1rem",
-              }}
+              className="bg-gray-200 m-4 p-4 border-none rounded-2xl"
             >
-              <button
-                style={{
-                  borderRadius: "1rem",
-                  border: "1px dashed lightGray",
-                  float: "right",
-                  backgroundColor: "white",
-                }}
-              >
+              <button className="rounded-2xl border-dashed border-2 float-right bg-transparent">
                 {" "}
                 {listItem.imageId ? (
                   <img
                     alt="Food Image"
                     src={FOOD_IMG + listItem.imageId}
-                    style={{
-                      width: "100%",
-                      height: "7rem",
-                      borderRadius: "1rem",
-                      marginRight: "1rem",
-                    }}
+                    className="w-full h-28 rounded-2xl mr-4"
                   />
                 ) : (
                   "FOOD IMAGE"
                 )}
               </button>
-              <p style={{ fontSize: "1rem" }}>
+              <p
+                className={`${
+                  listItem.itemAttribute.vegClassifier.toLowerCase() === "veg"
+                    ? "text-green-500"
+                    : "text-red-600"
+                } text-xl`}
+              >
                 {listItem.itemAttribute.vegClassifier}
               </p>
-              <p style={{ fontSize: "1.3rem" }}>
+              <p className="text-xl">
                 <b>{listItem.name}</b>
               </p>
-              <p style={{ fontSize: "1.3rem" }}>
+              <p className="text-xl">
                 <b>₹{listItem.price / 100 || listItem.defaultPrice / 100}</b>
               </p>
-              <p style={{ color: "gray" }}>{listItem.description}</p>
-              {/* <hr
-                style={{
-                  border: "0.5px dashed lightGray",
-                  marginTop: "2rem",
-                  marginBottom: "2rem",
-                }}
-              /> */}
+              <p className="text-gray-500 text-sm">{listItem.description}</p>
             </div>
           );
         })}
-        {/* <hr
-          style={{
-            border: "1rem dashed lightGray",
-            marginTop: "2rem",
-            marginBottom: "2rem",
-          }}
-        /> */}
       </div>
     );
   }
