@@ -30,7 +30,6 @@ const RestaurantMenu = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  // console.log(cardItemsList);
 
   return (
     <div className=" mx-60 my-12">
