@@ -1,5 +1,4 @@
-// import resList from "../utils/mockData";
-import RestaurentCards from "./RestaurentCards";
+import RestaurentCards, { withPromotedLabel } from "./RestaurentCards";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
@@ -27,7 +26,10 @@ const Body = () => {
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    // console.log(realRestaurantList);
   };
+
+  const PromotedRestaurents = withPromotedLabel(RestaurentCards);
 
   // const onlineStatus = useOnlineStatus();
   // console.log(onlineStatus);
@@ -37,7 +39,7 @@ const Body = () => {
   return restaurantList.length == 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="mx-2 px-2">
+    <div className="mx-56 px-2 py-4">
       <div className="flex m-2 p-2 justify-between">
         <button
           className=" cursor-pointer text-xl bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
@@ -72,14 +74,18 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className=" flex flex-wrap">
+      <div className=" flex flex-wrap my-4">
         {restaurantList?.map((restaurant) => (
           <Link
             to={"/restaurantMenu/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
             style={{ textDecoration: "none", color: "black" }}
           >
-            <RestaurentCards resData={restaurant} />{" "}
+            {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+              <PromotedRestaurents resData={restaurant} />
+            ) : (
+              <RestaurentCards resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

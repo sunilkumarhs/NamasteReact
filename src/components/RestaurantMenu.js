@@ -105,7 +105,7 @@ const RestaurantMenu = () => {
           </div>
         </div>
       )}
-      <hr className=" border-dashed border-2 border-grey-200 my-2" />
+      <hr className=" border-dashed border-2 border-grey-200 my-4" />
       <div>
         {cardItemsList?.map((itemcard) => (
           <ResMenuList key={i--} resList={itemcard} tBar={toggle} />

@@ -17,8 +17,8 @@ const Header = () => {
         </h1>
       </div>
       <div className="">
-        <ul className="flex justify-between px-3 py-3 text-lg cursor-pointer font-semibold">
-          <li className=" px-6 mx-2">
+        <ul className="flex justify-between py-3 text-lg cursor-pointer font-semibold">
+          <li className=" px-8 mx-2">
             <button
               className={`${
                 onlineStatus === false ? "bg-red-600" : "bg-green-600"
@@ -32,12 +32,12 @@ const Header = () => {
               </span>
             </button>
           </li>
-          <li className=" px-2 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
               Home
             </Link>
           </li>
-          <li className=" px-2 py-2 mx-2 hover:text-xl  hover:border-b-4 hover:border-white">
+          <li className=" px-6 py-2 mx-2 hover:text-xl  hover:border-b-4 hover:border-white">
             <Link
               to="/about"
               style={{ textDecoration: "none", color: "black" }}
@@ -45,7 +45,7 @@ const Header = () => {
               About Us
             </Link>
           </li>
-          <li className=" px-2 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
             <Link
               to="/contact"
               style={{ textDecoration: "none", color: "black" }}
@@ -53,7 +53,7 @@ const Header = () => {
               Contact Us
             </Link>
           </li>
-          <li className=" px-2 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
             <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
               Cart
             </Link>
@@ -63,7 +63,7 @@ const Header = () => {
               loginCredential === "SignIn"
                 ? "bg-green-500 text-amber-300 hover:bg-amber-300 hover:text-green-500 hover:border-green-500 hover:border-2"
                 : "bg-red-500 text-amber-300 hover:bg-amber-300 hover:text-red-500  hover:border-red-500 hover:border-2"
-            } px-4 py-2 mx-2 rounded-full`}
+            } px-2 py-2 ml-4 rounded-full`}
             onClick={() => {
               loginCredential === "SignIn"
                 ? setLoginCredential("SignOut")

@@ -27,11 +27,13 @@ class About extends React.Component {
   render() {
     return (
       <>
-        <div style={{ textAlign: "center" }}>
-          <h1>About-Us</h1>
-          <h3>Welcome to About-Us page using react-router-dom</h3>
+        <div className="text-center ">
+          <h1 className="text-4xl font-bold py-4 text-slate-500">About-Us</h1>
+          <h3 className="text-2xl font-semibold text-gray-400">
+            Welcome to About-Us page using react-router-dom
+          </h3>
         </div>
-        <div className="userCardContainer">
+        <div className="flex flex-wrap py-6">
           <User name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
           <UserClass name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
         </div>
