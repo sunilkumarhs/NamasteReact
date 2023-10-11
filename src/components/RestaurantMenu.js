@@ -25,9 +25,12 @@ const RestaurantMenu = () => {
     aggregatedDiscountInfo,
   } = resMenuData?.cards[0]?.card?.card?.info;
   const cardItemsList =
-    resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
   // console.log(cardItemsList);
-  let i = cardItemsList.length;
 
   return (
     <div className=" mx-60 my-12">
@@ -108,7 +111,11 @@ const RestaurantMenu = () => {
       <hr className=" border-dashed border-2 border-grey-200 my-4" />
       <div>
         {cardItemsList?.map((itemcard) => (
-          <ResMenuList key={i--} resList={itemcard} tBar={toggle} />
+          <ResMenuList
+            key={itemcard.card?.card?.title}
+            resList={itemcard.card?.card}
+            tBar={toggle}
+          />
         ))}
       </div>
     </div>

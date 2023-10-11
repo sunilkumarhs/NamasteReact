@@ -25,6 +25,7 @@ class About extends React.Component {
   componentDidMount() {}
 
   render() {
+    const names = { 0: "sunilkumarhs", 1: "CharanReddy404", 2: "SunilKumarKV" };
     return (
       <>
         <div className="text-center ">
@@ -34,7 +35,9 @@ class About extends React.Component {
           </h3>
         </div>
         <div className="flex flex-wrap py-6">
-          <User name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
+          <User id={names[0]} />
+          <User id={names[1]} />
+          <User id={names[2]} />
           <UserClass name={"Sunil Kumar H S"} location={"Karnataka, Kolar"} />
         </div>
       </>

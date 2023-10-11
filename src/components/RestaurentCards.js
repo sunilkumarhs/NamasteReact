@@ -29,8 +29,7 @@ export const withPromotedLabel = (RestaurentCards) => {
     return (
       <div>
         <label className=" absolute m-2 p-2 bg-slate-700 text-white">
-          {aggregatedDiscountInfoV3.header}
-          {" - "}
+          {aggregatedDiscountInfoV3.header}{" "}
           {aggregatedDiscountInfoV3.discountTag}
         </label>
         <RestaurentCards {...props} />
