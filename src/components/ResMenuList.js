@@ -1,11 +1,6 @@
-import { useState } from "react";
-
 import CardsList from "./CardsList";
 
-const ResMenuList = (props) => {
-  const [showList, setShowList] = useState(false);
-  const { resList } = props;
-  const { tBar } = props;
+const ResMenuList = ({ resList, tBar, showList, showIndex, displayTitle }) => {
   let itCard;
   if (tBar === true) {
     const filItem = resList.itemCards.filter(
@@ -17,7 +12,7 @@ const ResMenuList = (props) => {
   }
 
   const handleClick = () => {
-    setShowList(!showList);
+    showIndex();
   };
 
   return (
@@ -26,10 +21,12 @@ const ResMenuList = (props) => {
         className="flex justify-between py-2 cursor-pointer"
         onClick={handleClick}
       >
-        <h2 className="font-bold text-2xl mx-4">
-          {resList?.title} ({itCard?.length})
-        </h2>
-        <span className=" text-3xl px-4">⬇️</span>
+        {!displayTitle && (
+          <h2 className="font-bold text-2xl mx-4">
+            {resList?.title} ({itCard?.length})
+          </h2>
+        )}
+        <span className=" text-3xl px-4">{!displayTitle ? "⬇️" : "⬆️"}</span>
       </div>
       {showList && <CardsList data={itCard} />}
     </div>

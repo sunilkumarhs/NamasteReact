@@ -9,5 +9,7 @@ export const RESMENU_LINK =
 
 export const FOOD_IMG =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/";
+ export const LICENSE_LOGO =
+   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/"; 
 
 export const GIT_HUB = " https://api.github.com/users/";

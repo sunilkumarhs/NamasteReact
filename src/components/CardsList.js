@@ -11,7 +11,7 @@ const CardsList = (props) => {
             key={listItem.id}
             className="bg-gray-200  mx-4 my-6 p-4 border-none rounded-2xl flex justify-between shadow-xl"
           >
-            <div className="10/12">
+            <div>
               <p
                 className={`${
                   listItem.itemAttribute.vegClassifier.toLowerCase() === "veg"
@@ -31,8 +31,13 @@ const CardsList = (props) => {
                 {listItem.description}
               </p>
             </div>
-            <div className="w-2/12">
-              <button className=" absolute py-2 px-6 bg-white text-xl text-green-400 rounded-xl ml-9 mt-28 shadow-lg cursor-pointer">
+
+            <div className="ml-10">
+              <button
+                className={`${
+                  listItem.imageId ? "mt-28" : "mt-14"
+                } absolute py-2 px-6 bg-white text-xl text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
+              >
                 ADD
               </button>
               <button className="rounded-2xl border-dashed border-2  bg-transparent w-40">
