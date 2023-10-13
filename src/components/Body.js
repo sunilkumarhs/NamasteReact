@@ -1,8 +1,9 @@
 import RestaurentCards, { withPromotedLabel } from "./RestaurentCards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
 import { Link } from "react-router-dom";
+import UserContexts from "../utils/userContexts";
 // import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -17,7 +18,7 @@ const Body = () => {
   const fetchApiData = async () => {
     const data = await fetch(RES_LINK);
     const jsonData = await data.json();
-    // console.log(jsonData);
+    console.log(jsonData);
     setRealRestaurantList(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -30,6 +31,8 @@ const Body = () => {
   };
 
   const PromotedRestaurents = withPromotedLabel(RestaurentCards);
+
+  const { loggedUserId, setLoginUser } = useContext(UserContexts);
 
   // const onlineStatus = useOnlineStatus();
   // console.log(onlineStatus);
@@ -52,6 +55,14 @@ const Body = () => {
         >
           Top Rated
         </button>
+        <div>
+          <label className="font-semibold text-xl">UserName :</label>
+          <input
+            className=" border-2 rounded-md mx-2 px-4 py-2 bg-slate-200 border-none text-lg"
+            value={loggedUserId}
+            onChange={(e) => setLoginUser(e.target.value)}
+          />
+        </div>
         <div>
           <input
             type="search"

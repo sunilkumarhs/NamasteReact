@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import picture from "../../images/icon.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContexts from "../utils/userContexts";
 
 const Header = () => {
   const [loginCredential, setLoginCredential] = useState("SignIn");
   const onlineStatus = useOnlineStatus();
+  const { loggedUserId } = useContext(UserContexts);
   return (
     <div className="flex justify-between px-3 py-3 bg-amber-300 rounded-xl mx-4 my-2">
       <div>
@@ -72,6 +74,11 @@ const Header = () => {
           >
             {loginCredential}
           </button>
+          {loginCredential === "SignOut" && (
+            <label className="px-2 py-2 text-green-500">
+              {loggedUserId?.split(" ").join("")}
+            </label>
+          )}
         </ul>
       </div>
     </div>
