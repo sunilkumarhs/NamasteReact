@@ -9,6 +9,8 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ShimmerUI from "./components/ShimmerUI";
 import UserContexts from "./utils/userContexts";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const About = lazy(() => import("./components/About"));
 
@@ -24,10 +26,14 @@ const AppLayout = () => {
 
   return (
     <div className="">
-      <UserContexts.Provider value={{ loggedUserId: loginUser, setLoginUser }}>
-        <Header />
-        <Outlet />
-      </UserContexts.Provider>
+      <Provider store={appStore}>
+        <UserContexts.Provider
+          value={{ loggedUserId: loginUser, setLoginUser }}
+        >
+          <Header />
+          <Outlet />
+        </UserContexts.Provider>
+      </Provider>
     </div>
   );
 };
