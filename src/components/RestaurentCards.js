@@ -8,7 +8,7 @@ const RestaurentCards = (props) => {
       <img
         alt="Food Image"
         src={CDN_IMGLINK + cloudinaryImageId}
-        className=" w-full h-40 rounded-xl"
+        className="w-full h-40 rounded-xl"
       />
       <h3 className="text-xl font-semibold py-2 whitespace-nowrap overflow-hidden text-ellipsis">
         {name}

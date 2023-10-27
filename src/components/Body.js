@@ -4,7 +4,6 @@ import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContexts from "../utils/userContexts";
-// import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
@@ -27,7 +26,6 @@ const Body = () => {
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    // console.log(realRestaurantList);
   };
 
   const PromotedRestaurents = withPromotedLabel(RestaurentCards);

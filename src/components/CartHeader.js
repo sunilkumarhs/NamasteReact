@@ -3,17 +3,12 @@ import picture from "../../images/icon.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContexts from "../utils/userContexts";
-import { useSelector } from "react-redux";
-import CartContexts from "../utils/CartContexts";
 
-const Header = () => {
+const CartHeader = () => {
   const [loginCredential, setLoginCredential] = useState("SignIn");
   const onlineStatus = useOnlineStatus();
   const { loggedUserId } = useContext(UserContexts);
-  const cartItems = useSelector((store) => store.cart.items);
 
-  const data = "/cart";
-  // console.log(cartItems);
   return (
     <div className="flex justify-between px-3 py-3 bg-amber-300 rounded-xl mx-4 my-2">
       <div>
@@ -28,7 +23,7 @@ const Header = () => {
       </div>
       <div className="">
         <ul className="flex justify-between py-3 text-lg cursor-pointer font-semibold">
-          <li className=" px-8 mx-2">
+          <li className=" px-10 mx-4">
             <button
               className={`${
                 onlineStatus === false ? "bg-red-600" : "bg-green-600"
@@ -42,30 +37,9 @@ const Header = () => {
               </span>
             </button>
           </li>
-          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+          <li className=" px-10 mx-4 py-2 hover:text-xl hover:border-b-4 hover:border-white">
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              Home
-            </Link>
-          </li>
-          <li className=" px-6 py-2 mx-2 hover:text-xl  hover:border-b-4 hover:border-white">
-            <Link
-              to="/about"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              About Us
-            </Link>
-          </li>
-          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
-            <Link
-              to="/contact"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
-            <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
-              Cart-{cartItems.length}
+              Help
             </Link>
           </li>
           <button
@@ -93,4 +67,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default CartHeader;
