@@ -1,7 +1,15 @@
+import { addItem } from "../utils/cartSlice";
 import { FOOD_IMG } from "../utils/constants";
+import { useDispatch } from "react-redux";
 
 const CardsList = (props) => {
   const { data } = props;
+  const dispatch = useDispatch();
+
+  const handleAddItems = (list) => {
+    dispatch(addItem(list));
+  };
+
   return (
     <div>
       {data?.map((list) => {
@@ -37,6 +45,7 @@ const CardsList = (props) => {
                 className={`${
                   listItem.imageId ? "mt-28" : "mt-14"
                 } absolute py-2 px-6 bg-white text-xl text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
+                onClick={() => handleAddItems(list)}
               >
                 ADD
               </button>

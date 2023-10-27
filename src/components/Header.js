@@ -3,11 +3,14 @@ import picture from "../../images/icon.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContexts from "../utils/userContexts";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginCredential, setLoginCredential] = useState("SignIn");
   const onlineStatus = useOnlineStatus();
   const { loggedUserId } = useContext(UserContexts);
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
   return (
     <div className="flex justify-between px-3 py-3 bg-amber-300 rounded-xl mx-4 my-2">
       <div>
@@ -57,7 +60,7 @@ const Header = () => {
           </li>
           <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
             <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
-              Cart
+              Cart-{cartItems.length}
             </Link>
           </li>
           <button
