@@ -6,6 +6,9 @@ import { FOOD_IMG } from "../utils/constants";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  const cartResDeatils = useSelector((store) => store.cart.resDetails[0]);
+  // console.log(cartItems);
+  console.log(cartResDeatils);
   const dispatch = useDispatch();
   const handleClear = () => {
     dispatch(clearItems());
@@ -71,7 +74,17 @@ const Cart = () => {
             </div>
           </div>
           <div className="bg-slate-200">
-            <div></div>
+            <div className="py-4 my-4 pr-8 pl-6 mr-8 ml-4 bg-white shadow-xl">
+              <img
+                alt="Food Image"
+                src={FOOD_IMG + cartResDeatils.cloudinaryImageId}
+                className="w-16 h-16 rounded-2xl mr-4"
+              />
+              <h1 className="font-bold text-xl">{cartResDeatils.name}</h1>
+              <p className="text-gray-500">{cartResDeatils.areaName}</p>
+              <hr className="border-2 border-slate-800 m-2" />
+              {/* <CardsList data={cartItems} /> */}
+            </div>
           </div>
         </div>
       )}
