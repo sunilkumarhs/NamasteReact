@@ -2,25 +2,18 @@ import ShimmerUI from "./ShimmerUI";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ResMenuList from "./ResMenuList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LICENSE_LOGO } from "../utils/constants";
-import { addRes, removeRes } from "../utils/cartSlice";
-import { useDispatch, useSelector } from "react-redux/es";
 
 const RestaurantMenu = () => {
-  // const cartResDeatils = useSelector((store) => store.cart.resDetails);
-  // if (cartResDeatils.length != 0) dispatch(removeRes());
   const { resId } = useParams();
   const [toggle, setToggle] = useState(false);
   const [showIndex, setShowIndex] = useState(0);
-  const dispatch = useDispatch();
   const toggleClass = " transform translate-x-5";
-
   const resMenuData = useRestaurantMenu(resId);
 
   if (resMenuData === null) return <ShimmerUI />;
   const resMenuDetails = resMenuData?.cards[0]?.card?.card?.info;
-  dispatch(addRes(resMenuDetails));
 
   const {
     name,
@@ -34,7 +27,6 @@ const RestaurantMenu = () => {
     aggregatedDiscountInfo,
   } = resMenuDetails;
 
-  // console.log(resMenuData);
   const cardItemsList =
     resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
@@ -142,6 +134,7 @@ const RestaurantMenu = () => {
             showList={index === showIndex && true}
             showIndex={() => setShowIndex(index)}
             displayTitle={index === showIndex && true}
+            resDetails={resMenuDetails}
           />
         ))}
       </div>

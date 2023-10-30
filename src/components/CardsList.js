@@ -1,12 +1,26 @@
-import { addItem } from "../utils/cartSlice";
+import { addItem, addRes, clearItems, removeRes } from "../utils/cartSlice";
 import { FOOD_IMG } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CardsList = (props) => {
   const { data } = props;
+  const { resInfo } = props;
   const dispatch = useDispatch();
+  const cartResDeatils = useSelector((store) => store.cart.resDetails);
+  console.log(cartResDeatils);
 
   const handleAddItems = (list) => {
+    if (cartResDeatils.length != 0) {
+      if (cartResDeatils[0].name != resInfo.name) {
+        dispatch(clearItems());
+        dispatch(removeRes());
+        dispatch(addRes(resInfo));
+      }
+    }
+    if (cartResDeatils.length === 0) {
+      dispatch(addRes(resInfo));
+    }
+
     dispatch(addItem(list));
   };
 

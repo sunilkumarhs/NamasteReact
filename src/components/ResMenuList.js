@@ -1,6 +1,13 @@
 import CardsList from "./CardsList";
 
-const ResMenuList = ({ resList, tBar, showList, showIndex, displayTitle }) => {
+const ResMenuList = ({
+  resList,
+  tBar,
+  showList,
+  showIndex,
+  displayTitle,
+  resDetails,
+}) => {
   let itCard;
   if (tBar === true) {
     const filItem = resList.itemCards.filter(
@@ -28,7 +35,7 @@ const ResMenuList = ({ resList, tBar, showList, showIndex, displayTitle }) => {
         )}
         <span className=" text-3xl px-4">{!displayTitle ? "⬇️" : "⬆️"}</span>
       </div>
-      {showList && <CardsList data={itCard} />}
+      {showList && <CardsList data={itCard} resInfo={resDetails} />}
     </div>
   );
 };

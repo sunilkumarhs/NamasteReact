@@ -32,11 +32,6 @@ const Body = () => {
 
   const { loggedUserId, setLoginUser } = useContext(UserContexts);
 
-  // const onlineStatus = useOnlineStatus();
-  // console.log(onlineStatus);
-  // if (onlineStatus === false)
-  //   return <h1>Your are Offline, please check your internet connection!</h1>;
-
   return restaurantList.length == 0 ? (
     <ShimmerUI />
   ) : (
