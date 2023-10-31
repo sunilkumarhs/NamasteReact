@@ -1,8 +1,14 @@
 import { useSelector } from "react-redux";
 import CartHeader from "./CartHeader";
 import { FOOD_IMG } from "../utils/constants";
+import { useState } from "react";
 
 const Cart = () => {
+  let total = 0;
+  let gstCost = 0;
+  let totalAmount = 0;
+  let itemCount = 1;
+  const [itemCount1, setItemCount] = useState(1);
   const cartItems = useSelector((store) => store.cart.items);
   const cartResDeatils = useSelector((store) => store.cart.resDetails[0]);
   console.log(cartItems);
@@ -59,36 +65,49 @@ const Cart = () => {
                 src={FOOD_IMG + cartResDeatils.cloudinaryImageId}
                 className="w-16 h-16 rounded-2xl mr-4"
               />
-              <h1 className="font-bold text-xl whitespace-nowrap overflow-hidden">
+              <p className="font-bold text-xl whitespace-nowrap overflow-hidden">
                 {cartResDeatils.name}
-              </h1>
-              <p className="text-gray-500">{cartResDeatils.areaName}</p>
-              <hr className="border-2 border-slate-800 m-2" />
+              </p>
+              <p className="text-gray-500 pb-2 ">{cartResDeatils.areaName}</p>
+              <hr className="border-2 border-slate-800" />
             </div>
             <div className="bg-white px-6 mr-4 ml-2">
               {cartItems?.map((item) => {
                 const itemInfo = item.card.info;
+
+                const itemPrice =
+                  (itemInfo.price / 100 || itemInfo.defaultPrice) * itemCount1;
+                total = Math.round(total + itemPrice);
+                gstCost = Math.round((total * 8) / 100);
+                totalAmount = Math.round(
+                  total +
+                    cartResDeatils?.feeDetails?.totalFee / 100 +
+                    3 +
+                    gstCost
+                );
+                const DecCount = (info) => {
+                  if (info.id === itemInfo.id) {
+                    setItemCount(itemCount1 - 1);
+                  }
+                };
+                const IncCount = (info) => {
+                  if (info.id === itemInfo.id) {
+                    setItemCount(itemCount1 + 1);
+                  }
+                  console.log(info + "hi");
+                };
                 console.log(item);
+                console.log(itemCount1);
                 return (
                   <div key={itemInfo.id} className="flex justify-between py-4">
-                    <div className="flex ">
-                      {/* <p
-                        className={`${
-                          itemInfo.itemAttribute.vegClassifier.toLowerCase() ===
-                          "veg"
-                            ? "text-green-500"
-                            : "text-red-600"
-                        } text-base mr-2`}
-                      >
-                        {itemInfo.itemAttribute.vegClassifier}
-                      </p> */}
+                    <div className="flex mr-2">
                       <div
                         className={`${
                           itemInfo.itemAttribute.vegClassifier.toLowerCase() ===
                           "veg"
                             ? "border-green-600"
                             : "border-red-600"
-                        } border-2 md:w-5 md:h-5 h-5 w-5 rounded-[0.2rem] transform duration-300 ease-in-out relative bg-white mr-2`}
+                        } border-2 md:w-5 md:h-5 h-5 w-10 rounded-[0.2rem] bg-white`}
                       >
                         <span
                           className={`${
@@ -99,21 +118,61 @@ const Cart = () => {
                           } w-[0.7rem] h-[0.7rem] rounded-full absolute mt-[0.2rem] ml-[0.2rem] `}
                         ></span>
                       </div>
-                      <p className="font-semibold text-base">{itemInfo.name}</p>
                     </div>
-                    <div className="flex">
+
+                    <div className="flex ">
+                      <p className="font-semibold text-sm ">{itemInfo.name}</p>
+                    </div>
+                    <div className="flex h-10">
                       <div className="flex border-2 mx-4 ">
-                        <button className="font-bold text-2xl px-2 ">-</button>
-                        <p className="font-bold text-sm px-2 py-2">1</p>
-                        <button className="font-bold text-2xl px-2">+</button>
+                        <button
+                          className="font-bold text-2xl px-2 hover:text-green-500"
+                          onClick={() => DecCount(itemInfo)}
+                        >
+                          -
+                        </button>
+                        <p className="font-bold text-sm px-2 py-2">
+                          {itemCount1}
+                        </p>
+                        <button
+                          className="font-bold text-2xl px-2 hover:text-green-500"
+                          onClick={() => IncCount(itemInfo)}
+                        >
+                          +
+                        </button>
                       </div>
-                      <p className="text-gray-500">
-                        ₹{itemInfo.price / 100 || itemInfo.defaultPrice / 100}
-                      </p>
+                      <p className="text-gray-500">₹{itemPrice}</p>
                     </div>
                   </div>
                 );
               })}
+            </div>
+            <div className="py-4 px-6 mr-4 ml-2 bg-white">
+              <p className="font-semibold text-lg">Bill Details</p>
+              <div className="flex justify-between py-3">
+                <p>Item Total</p>
+                <p>₹{total}</p>
+              </div>
+              <div className="flex justify-between">
+                <p>
+                  Delivery Fee | {cartResDeatils?.sla?.lastMileTravelString}
+                </p>
+                <p>₹ {cartResDeatils?.feeDetails?.totalFee / 100}</p>
+              </div>
+              <hr className="border-[1rem]border-slate-200 my-3" />
+              <div className="flex justify-between">
+                <p>Platform Fee</p>
+                <p>₹{3}</p>
+              </div>
+              <div className="flex justify-between py-3">
+                <p>GST and Restaurant Charges</p>
+                <p>₹{gstCost}</p>
+              </div>
+              <hr className="border-2 border-slate-600 mt-2" />
+              <div className="flex justify-between py-6">
+                <p className="font-bold text-lg">TO PAY</p>
+                <p className="font-bold text-lg">₹{totalAmount}</p>
+              </div>
             </div>
           </div>
         </div>
