@@ -1,18 +1,42 @@
-import { useSelector } from "react-redux";
-import CartHeader from "./CartHeader";
+import { useDispatch, useSelector } from "react-redux";
 import { FOOD_IMG } from "../utils/constants";
-import { useState } from "react";
+import { modifyItem } from "../utils/cartSlice";
+import CartContexts from "../utils/CartContexts";
+import { useEffect, useContext } from "react";
 
 const Cart = () => {
   let total = 0;
   let gstCost = 0;
   let totalAmount = 0;
-  let itemCount = 1;
-  const [itemCount1, setItemCount] = useState(1);
+
+  const dispatch = useDispatch();
+  const { setCurPath } = useContext(CartContexts);
+
   const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
   const cartResDeatils = useSelector((store) => store.cart.resDetails[0]);
-  console.log(cartItems);
-  console.log(cartResDeatils);
+  // console.log(cartResDeatils);
+
+  const IncCount = (info) => {
+    dispatch(
+      modifyItem({
+        id: info.id,
+        type: "increase",
+      })
+    );
+  };
+  const DecCount = (info) => {
+    dispatch(
+      modifyItem({
+        id: info.id,
+        type: "decrease",
+      })
+    );
+  };
+  const deliveryFee = cartResDeatils?.feeDetails?.totalFee / 100 || 0;
+  useEffect(() => {
+    setCurPath("cart");
+  }, []);
   return (
     <>
       {/* <CartHeader /> */}
@@ -73,37 +97,18 @@ const Cart = () => {
             </div>
             <div className="bg-white px-6 mr-4 ml-2">
               {cartItems?.map((item) => {
-                const itemInfo = item.card.info;
-
                 const itemPrice =
-                  (itemInfo.price / 100 || itemInfo.defaultPrice) * itemCount1;
+                  (item.price / 100 || item.defaultPrice) * item.itemCount;
                 total = Math.round(total + itemPrice);
                 gstCost = Math.round((total * 8) / 100);
-                totalAmount = Math.round(
-                  total +
-                    cartResDeatils?.feeDetails?.totalFee / 100 +
-                    3 +
-                    gstCost
-                );
-                const DecCount = (info) => {
-                  if (info.id === itemInfo.id) {
-                    setItemCount(itemCount1 - 1);
-                  }
-                };
-                const IncCount = (info) => {
-                  if (info.id === itemInfo.id) {
-                    setItemCount(itemCount1 + 1);
-                  }
-                  console.log(info + "hi");
-                };
-                console.log(item);
-                console.log(itemCount1);
+                totalAmount = Math.round(total + deliveryFee + 3 + gstCost);
+
                 return (
-                  <div key={itemInfo.id} className="flex justify-between py-4">
+                  <div key={item.id} className="flex justify-between py-4">
                     <div className="flex mr-2">
                       <div
                         className={`${
-                          itemInfo.itemAttribute.vegClassifier.toLowerCase() ===
+                          item.itemAttribute.vegClassifier.toLowerCase() ===
                           "veg"
                             ? "border-green-600"
                             : "border-red-600"
@@ -111,7 +116,7 @@ const Cart = () => {
                       >
                         <span
                           className={`${
-                            itemInfo.itemAttribute.vegClassifier.toLowerCase() ===
+                            item.itemAttribute.vegClassifier.toLowerCase() ===
                             "veg"
                               ? "bg-green-600"
                               : "bg-red-600"
@@ -121,27 +126,27 @@ const Cart = () => {
                     </div>
 
                     <div className="flex ">
-                      <p className="font-semibold text-sm ">{itemInfo.name}</p>
+                      <p className="font-semibold text-sm ">{item.name}</p>
                     </div>
                     <div className="flex h-10">
                       <div className="flex border-2 mx-4 ">
                         <button
                           className="font-bold text-2xl px-2 hover:text-green-500"
-                          onClick={() => DecCount(itemInfo)}
+                          onClick={() => DecCount(item)}
                         >
                           -
                         </button>
                         <p className="font-bold text-sm px-2 py-2">
-                          {itemCount1}
+                          {item.itemCount}
                         </p>
                         <button
                           className="font-bold text-2xl px-2 hover:text-green-500"
-                          onClick={() => IncCount(itemInfo)}
+                          onClick={() => IncCount(item)}
                         >
                           +
                         </button>
                       </div>
-                      <p className="text-gray-500">₹{itemPrice}</p>
+                      <p className="text-gray-500">₹{Math.round(itemPrice)}</p>
                     </div>
                   </div>
                 );
@@ -157,7 +162,7 @@ const Cart = () => {
                 <p>
                   Delivery Fee | {cartResDeatils?.sla?.lastMileTravelString}
                 </p>
-                <p>₹ {cartResDeatils?.feeDetails?.totalFee / 100}</p>
+                <p>₹ {deliveryFee}</p>
               </div>
               <hr className="border-[1rem]border-slate-200 my-3" />
               <div className="flex justify-between">

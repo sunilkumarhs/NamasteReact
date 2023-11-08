@@ -4,6 +4,9 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ResMenuList from "./ResMenuList";
 import { useState } from "react";
 import { LICENSE_LOGO } from "../utils/constants";
+import { useContext } from "react";
+import CartContexts from "../utils/CartContexts";
+import { useEffect } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -11,6 +14,10 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(0);
   const toggleClass = " transform translate-x-5";
   const resMenuData = useRestaurantMenu(resId);
+  const { setCurPath } = useContext(CartContexts);
+  useEffect(() => {
+    setCurPath("home");
+  }, []);
 
   if (resMenuData === null) return <ShimmerUI />;
   const resMenuDetails = resMenuData?.cards[0]?.card?.card?.info;

@@ -10,6 +10,7 @@ import ShimmerUI from "./components/ShimmerUI";
 import UserContexts from "./utils/userContexts";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import CartContexts from "./utils/CartContexts";
 
 const About = lazy(() => import("./components/About"));
 
@@ -17,6 +18,7 @@ const Cart = lazy(() => import("./components/Cart"));
 
 const AppLayout = () => {
   const [loginUser, setLoginUser] = useState(null);
+  const [curPath, setCurPath] = useState(null);
 
   useEffect(() => {
     const data = "Sunil Kumar";
@@ -28,8 +30,10 @@ const AppLayout = () => {
         <UserContexts.Provider
           value={{ loggedUserId: loginUser, setLoginUser }}
         >
-          <Header />
-          <Outlet />
+          <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
+            <Header />
+            <Outlet />
+          </CartContexts.Provider>
         </UserContexts.Provider>
       </Provider>
     </div>

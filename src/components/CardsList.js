@@ -9,7 +9,7 @@ const CardsList = (props) => {
   const cartResDeatils = useSelector((store) => store.cart.resDetails);
   console.log(cartResDeatils);
 
-  const handleAddItems = (list) => {
+  const handleAddItems = (itemInfo) => {
     if (cartResDeatils.length != 0) {
       if (cartResDeatils[0].name != resInfo.name) {
         dispatch(clearItems());
@@ -21,13 +21,14 @@ const CardsList = (props) => {
       dispatch(addRes(resInfo));
     }
 
-    dispatch(addItem(list));
+    dispatch(addItem(itemInfo));
   };
 
   return (
     <div>
       {data?.map((list) => {
         const listItem = list?.card?.info;
+        const itemInfo = { itemCount: 1, ...listItem };
         return (
           <div
             key={listItem.id}
@@ -59,7 +60,7 @@ const CardsList = (props) => {
                 className={`${
                   listItem.imageId ? "mt-28" : "mt-14"
                 } absolute py-2 px-6 bg-white text-xl text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
-                onClick={() => handleAddItems(list)}
+                onClick={() => handleAddItems(itemInfo)}
               >
                 ADD
               </button>

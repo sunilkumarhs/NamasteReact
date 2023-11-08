@@ -4,14 +4,17 @@ import ShimmerUI from "./ShimmerUI";
 import { RES_LINK } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContexts from "../utils/userContexts";
+import CartContexts from "../utils/CartContexts";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
   const [searchRes, setSearchRes] = useState("");
+  const { setCurPath } = useContext(CartContexts);
 
   useEffect(() => {
     fetchApiData();
+    setCurPath("home");
   }, []);
 
   const fetchApiData = async () => {
