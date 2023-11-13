@@ -1,14 +1,16 @@
 import RestaurentCards, { withPromotedLabel } from "./RestaurentCards";
 import { useState, useEffect, useContext } from "react";
 import ShimmerUI from "./ShimmerUI";
-import { RES_LINK } from "../utils/constants";
+import { CDN_IMGLINK, RES_LINK } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContexts from "../utils/userContexts";
 import CartContexts from "../utils/CartContexts";
+import OfferCards from "./OfferCards";
 
 const Body = () => {
   const [realRestaurantList, setRealRestaurantList] = useState([]);
   const [restaurantList, setRestaurantList] = useState([]);
+  const [offersList, setOffersList] = useState([]);
   const [searchRes, setSearchRes] = useState("");
   const { setCurPath } = useContext(CartContexts);
 
@@ -21,6 +23,9 @@ const Body = () => {
     const data = await fetch(RES_LINK);
     const jsonData = await data.json();
     console.log(jsonData);
+    setOffersList(
+      jsonData?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    );
     setRealRestaurantList(
       jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -81,20 +86,39 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className=" flex flex-wrap my-4">
-        {restaurantList?.map((restaurant) => (
-          <Link
-            to={"/restaurantMenu/" + restaurant?.info?.id}
-            key={restaurant?.info?.id}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            {restaurant?.info?.aggregatedDiscountInfoV3 ? (
-              <PromotedRestaurents resData={restaurant} />
-            ) : (
-              <RestaurentCards resData={restaurant} />
-            )}
-          </Link>
-        ))}
+      <div className="my-6 ">
+        <h1 className="font-bold text-3xl">Best Offers for You</h1>
+        <div className="">
+          {offersList?.map((offer) => (
+            // <OfferCards offData={offer} key={offer.id} />
+            <img
+              alt="Food Image"
+              key={offer.id}
+              src={CDN_IMGLINK + offer.imageId}
+              className="w-2/4 h-50 my-4"
+            />
+          ))}
+        </div>
+      </div>
+      <div className="my-6">
+        <h1 className="font-bold text-3xl">
+          Restaurants with online food delivery in Bangalore
+        </h1>
+        <div className=" flex flex-wrap">
+          {restaurantList?.map((restaurant) => (
+            <Link
+              to={"/restaurantMenu/" + restaurant?.info?.id}
+              key={restaurant?.info?.id}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+                <PromotedRestaurents resData={restaurant} />
+              ) : (
+                <RestaurentCards resData={restaurant} />
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
