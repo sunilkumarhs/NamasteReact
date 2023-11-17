@@ -2,7 +2,7 @@ import RestaurentCards, { withPromotedLabel } from "./RestaurentCards";
 import { useState, useEffect, useContext } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { CDN_IMGLINK, RES_LINK } from "../utils/constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContexts from "../utils/userContexts";
 import CartContexts from "../utils/CartContexts";
 import OfferCards from "./OfferCards";
@@ -17,6 +17,7 @@ const Body = () => {
   const [footerInfo, setFooterInfo] = useState([]);
   const [searchRes, setSearchRes] = useState("");
   const { setCurPath } = useContext(CartContexts);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchApiData();
@@ -51,6 +52,10 @@ const Body = () => {
   const PromotedRestaurents = withPromotedLabel(RestaurentCards);
 
   const { loggedUserId, setLoginUser } = useContext(UserContexts);
+
+  const toOfferDepth = (offer) => {
+    navigate("/restaurantMenu/" + offer?.entityId);
+  };
 
   return restaurantList.length == 0 ? (
     <ShimmerUI />
@@ -103,14 +108,14 @@ const Body = () => {
         </div>
         <div className="my-6">
           <h1 className="font-bold text-3xl">Best Offers for You</h1>
-          <div className="flex overflow-x-scroll no-scrollbar my-2">
+          <div className="flex overflow-x-scroll no-scrollbar my-3">
             {offersList?.map((offer) => (
-              // <OfferCards offData={offer} key={offer.id} />
               <img
                 alt="Food Image"
                 key={offer.id}
                 src={CDN_IMGLINK + offer.imageId}
                 className="w-2/4 h-72 mr-4 cursor-pointer"
+                onClick={() => toOfferDepth(offer)}
               />
             ))}
           </div>
