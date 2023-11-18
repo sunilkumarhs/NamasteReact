@@ -48,6 +48,7 @@ const Body = () => {
         ?.restaurants
     );
   };
+  // const coll = imageCards[0].entityId.substring(36, 41);
 
   const PromotedRestaurents = withPromotedLabel(RestaurentCards);
 
@@ -57,14 +58,19 @@ const Body = () => {
     navigate("/restaurantMenu/" + offer?.entityId);
   };
 
+  const toCollectionPage = (img) => {
+    console.log(img);
+    navigate("/collectionList/" + img?.entityId.substring(36, 41));
+  };
+
   return restaurantList.length == 0 ? (
     <ShimmerUI />
   ) : (
     <>
-      <div className="mx-48 px-2 py-4">
+      <div className="mx-36 px-2 py-4">
         <div className="flex m-2 p-2 justify-between">
           <button
-            className=" cursor-pointer text-xl bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
+            className=" cursor-pointer text-lg bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
             onClick={() => {
               const filteredList = restaurantList.filter(
                 (res) => res?.info?.avgRating > 4
@@ -75,7 +81,7 @@ const Body = () => {
             Top Rated
           </button>
           <div>
-            <label className="font-semibold text-xl">UserName :</label>
+            <label className="font-semibold text-lg">UserName :</label>
             <input
               className=" border-2 rounded-md mx-2 px-4 py-2 bg-slate-200 border-none text-lg"
               value={loggedUserId}
@@ -92,7 +98,7 @@ const Body = () => {
             />
             <button
               type="button"
-              className=" text-xl font-semibold text-white bg-sky-500 hover:bg-sky-700 p-2 rounded-full "
+              className=" text-lg font-semibold text-white bg-sky-500 hover:bg-sky-700 p-2 rounded-full "
               onClick={() => {
                 const filterRes = realRestaurantList.filter((res) =>
                   res?.info?.name
@@ -107,35 +113,36 @@ const Body = () => {
           </div>
         </div>
         <div className="my-6">
-          <h1 className="font-bold text-3xl">Best Offers for You</h1>
+          <h1 className="font-bold text-2xl">Best Offers for You</h1>
           <div className="flex overflow-x-scroll no-scrollbar my-3">
             {offersList?.map((offer) => (
               <img
                 alt="Food Image"
                 key={offer.id}
                 src={CDN_IMGLINK + offer.imageId}
-                className="w-2/4 h-72 mr-4 cursor-pointer"
+                className="w-2/4 h-64 mr-4 cursor-pointer"
                 onClick={() => toOfferDepth(offer)}
               />
             ))}
           </div>
         </div>
         <div className="my-6">
-          <h1 className="font-bold text-3xl">What`s in your mind?</h1>
+          <h1 className="font-bold text-2xl">What`s in your mind?</h1>
           <div className="flex overflow-x-scroll no-scrollbar my-2">
             {imageCards?.map((img) => (
               <img
                 alt="Food Image"
                 key={img.id}
                 src={CDN_IMGLINK + img.imageId}
-                className="w-2/4 h-52 mr-4 cursor-pointer"
+                className="w-2/4 h-44 mr-4 cursor-pointer"
+                onClick={() => toCollectionPage(img)}
               />
             ))}
           </div>
         </div>
         <hr className="border-2 border-slate-200 mt-2" />
         <div className="my-6">
-          <h1 className="font-bold text-3xl">
+          <h1 className="font-bold text-2xl">
             Top restaurant chains in Bangalore
           </h1>
           <div className=" flex flex-wrap justify-between">
@@ -156,7 +163,7 @@ const Body = () => {
         </div>
         <hr className="border-2 border-slate-200 mt-2" />
         <div className="my-6">
-          <h1 className="font-bold text-3xl">
+          <h1 className="font-bold text-2xl">
             Restaurants with online food delivery in Bangalore
           </h1>
           <div className=" flex flex-wrap justify-between">

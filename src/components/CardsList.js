@@ -32,7 +32,7 @@ const CardsList = (props) => {
         return (
           <div
             key={listItem.id}
-            className="bg-gray-200  mx-4 my-6 p-4 border-none rounded-2xl flex justify-between shadow-xl"
+            className="bg-gray-200  mx-4 my-4 p-3 border-none rounded-2xl flex justify-between shadow-xl"
           >
             <div>
               <p
@@ -44,13 +44,13 @@ const CardsList = (props) => {
               >
                 {listItem.itemAttribute.vegClassifier}
               </p>
-              <p className="text-xl my-2">
+              <p className="text-xl my-1">
                 <b>{listItem.name}</b>
               </p>
               <p className="text-xl">
                 <b>₹{listItem.price / 100 || listItem.defaultPrice / 100}</b>
               </p>
-              <p className="text-gray-500 text-sm my-2">
+              <p className="text-gray-500 text-sm my-1">
                 {listItem.description}
               </p>
             </div>
@@ -59,18 +59,18 @@ const CardsList = (props) => {
               <button
                 className={`${
                   listItem.imageId ? "mt-28" : "mt-14"
-                } absolute py-2 px-6 bg-white text-xl text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
+                } absolute py-1 px-6 bg-white text-lg text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
                 onClick={() => handleAddItems(itemInfo)}
               >
                 ADD
               </button>
-              <button className="rounded-2xl border-dashed border-2  bg-transparent w-40">
+              <button className="rounded-2xl border-dashed border-2  bg-transparent w-36">
                 {" "}
                 {listItem.imageId ? (
                   <img
                     alt="Food Image"
                     src={FOOD_IMG + listItem.imageId}
-                    className="w-full h-36 rounded-2xl mr-4"
+                    className="w-full h-32 rounded-2xl mr-4"
                   />
                 ) : (
                   "FOOD IMAGE"

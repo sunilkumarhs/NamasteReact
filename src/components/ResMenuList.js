@@ -23,17 +23,17 @@ const ResMenuList = ({
   };
 
   return (
-    <div className=" bg-slate-400 p-2 mb-6 shadow-xl rounded-lg ">
+    <div className=" bg-slate-400 p-2 mb-4 shadow-xl rounded-lg ">
       <div
         className="flex justify-between py-2 cursor-pointer"
         onClick={handleClick}
       >
         {!displayTitle && (
-          <h2 className="font-bold text-2xl mx-4">
+          <h2 className="font-bold text-xl mx-4">
             {resList?.title} ({itCard?.length})
           </h2>
         )}
-        <span className=" text-3xl px-4">{!displayTitle ? "⬇️" : "⬆️"}</span>
+        <span className=" text-2xl px-4">{!displayTitle ? "⬇️" : "⬆️"}</span>
       </div>
       {showList && <CardsList data={itCard} resInfo={resDetails} />}
     </div>

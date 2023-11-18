@@ -11,6 +11,7 @@ import UserContexts from "./utils/userContexts";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import CartContexts from "./utils/CartContexts";
+import CollectionList from "./components/CollectionList";
 
 const About = lazy(() => import("./components/About"));
 
@@ -72,6 +73,10 @@ const appRouter = createBrowserRouter([
             <Cart />
           </Suspense>
         ),
+      },
+      {
+        path: "/collectionList/:colId",
+        element: <CollectionList />,
       },
     ],
     errorElement: <Error />,

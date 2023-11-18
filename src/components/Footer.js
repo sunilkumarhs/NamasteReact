@@ -7,25 +7,25 @@ const Footer = (props) => {
   return (
     <div className="bg-slate-200">
       <div className=" flex p-6 mx-32">
-        <h1 className="font-bold text-3xl w-2/4 mr-12">
+        <h1 className="font-bold text-2xl w-2/4 mr-12">
           For better experience, download the reactFoodDelivery now
         </h1>
         <img
           alt="Google Play"
           src={CDN_IMGLINK + footInfo.androidAppImage}
-          className="w-52 h-30 mr-8 cursor-pointer"
+          className="w-52 h-20 mr-8 cursor-pointer"
         />
         <img
           alt="ios app"
           src={CDN_IMGLINK + footInfo.iosAppImage}
-          className="w-52 h-30 cursor-pointer"
+          className="w-52 h-20 cursor-pointer"
         />
       </div>
-      <div className="bg-slate-900 py-12 px-56 flex justify-between">
+      <div className="bg-slate-900 py-10 px-56 flex justify-between">
         <div>
           <div className="flex">
             <img src={logo} alt="logos" className=" rounded-full" />
-            <h1 className="text-white font-bold text-4xl m-3">RFD</h1>
+            <h1 className="text-white font-bold text-3xl m-3">RFD</h1>
           </div>
           <h1 className="font-semibold text-slate-500 text-lg px-2 mt-2">
             Ⓒ 2023 NamasteReact

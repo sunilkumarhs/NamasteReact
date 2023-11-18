@@ -46,28 +46,28 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex">
-          <div className=" bg-slate-200 pr-5 w-8/12">
+          <div className=" bg-slate-200 pr-2 w-8/12">
             <div className="flex justify-between">
               <div className="bg-white p-6 m-6">
                 <h3 className="font-bold text-xl px-2">Account</h3>
-                <p className="text-slate-400 px-2 text-xl">
+                <p className="text-slate-400 pl-2 text-lg">
                   To place order now, log in to your existing account or sign
                   up.
                 </p>
-                <div className="p-6 mt-6">
-                  <button className="border-2 border-green-400 px-8 mx-10 ">
+                <div className="p-4 mt-4">
+                  <button className="border-2 border-green-400 px-6 mx-8 ">
                     <span className="text-sm text-green-500">
                       Have an account?
                     </span>{" "}
                     <h3 className="text-green-500 font-bold text-xl">LOG IN</h3>
                   </button>
-                  <button className="bg-green-500 px-8 mx-10">
+                  <button className="bg-green-500 px-6 mx-8">
                     <span className="text-sm text-white">New to FoodApp?</span>{" "}
                     <h3 className="text-white font-bold text-xl">SIGN UP</h3>
                   </button>
                 </div>
               </div>
-              <div className="bg-white p-6 m-6">
+              <div className="bg-white p-6 my-6 mr-6">
                 <img
                   alt="Food Image"
                   src={FOOD_IMG + "Image-login_btpq7r"}
@@ -83,7 +83,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="bg-slate-200 w-4/12">
-            <div className="py-4 mt-4 px-6 mr-4 ml-2 bg-white shadow-xl">
+            <div className="py-4 mt-6 px-6 mr-4 ml-2 bg-white">
               <img
                 alt="Food Image"
                 src={FOOD_IMG + cartResDeatils.cloudinaryImageId}
@@ -98,13 +98,14 @@ const Cart = () => {
             <div className="bg-white px-6 mr-4 ml-2">
               {cartItems?.map((item) => {
                 const itemPrice =
-                  (item.price / 100 || item.defaultPrice) * item.itemCount;
+                  (item.price / 100 || item.defaultPrice / 100) *
+                  item.itemCount;
                 total = Math.round(total + itemPrice);
                 gstCost = Math.round((total * 8) / 100);
                 totalAmount = Math.round(total + deliveryFee + 3 + gstCost);
 
                 return (
-                  <div key={item.id} className="flex justify-between py-4">
+                  <div key={item.id} className="flex justify-between py-3">
                     <div className="flex mr-2">
                       <div
                         className={`${
@@ -112,7 +113,7 @@ const Cart = () => {
                           "veg"
                             ? "border-green-600"
                             : "border-red-600"
-                        } border-2 md:w-5 md:h-5 h-5 w-10 rounded-[0.2rem] bg-white`}
+                        } border-2 md:w-5 md:h-5 h-5 w-10 rounded-[0.2rem] bg-white pl-[2.2px] pt-[2.2px]`}
                       >
                         <span
                           className={`${
@@ -120,18 +121,15 @@ const Cart = () => {
                             "veg"
                               ? "bg-green-600"
                               : "bg-red-600"
-                          } w-[0.7rem] h-[0.7rem] rounded-full absolute mt-[0.2rem] ml-[0.2rem] `}
+                          } w-[0.7rem] h-[0.7rem] rounded-full absolute`}
                         ></span>
                       </div>
                     </div>
-
-                    <div className="flex ">
-                      <p className="font-semibold text-sm ">{item.name}</p>
-                    </div>
+                    <p className="font-semibold text-sm ">{item.name}</p>
                     <div className="flex h-10">
                       <div className="flex border-2 mx-4 ">
                         <button
-                          className="font-bold text-2xl px-2 hover:text-green-500"
+                          className="font-bold text-xl px-2 hover:text-green-500"
                           onClick={() => DecCount(item)}
                         >
                           -
@@ -140,7 +138,7 @@ const Cart = () => {
                           {item.itemCount}
                         </p>
                         <button
-                          className="font-bold text-2xl px-2 hover:text-green-500"
+                          className="font-bold text-xl px-2 hover:text-green-500"
                           onClick={() => IncCount(item)}
                         >
                           +
@@ -152,7 +150,7 @@ const Cart = () => {
                 );
               })}
             </div>
-            <div className="py-4 px-6 mr-4 ml-2 bg-white">
+            <div className="py-2 px-6 mr-4 ml-2 bg-white mb-4">
               <p className="font-semibold text-lg">Bill Details</p>
               <div className="flex justify-between py-3">
                 <p>Item Total</p>
@@ -174,7 +172,7 @@ const Cart = () => {
                 <p>₹{gstCost}</p>
               </div>
               <hr className="border-2 border-slate-600 mt-2" />
-              <div className="flex justify-between py-6">
+              <div className="flex justify-between pt-4">
                 <p className="font-bold text-lg">TO PAY</p>
                 <p className="font-bold text-lg">₹{totalAmount}</p>
               </div>
