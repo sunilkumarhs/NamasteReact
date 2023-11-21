@@ -20,7 +20,9 @@ const RestaurentCards = (props) => {
         <h4 className="font-semibold">{avgRating}*</h4>
         <h4 className="font-semibold px-4"> {sla.deliveryTime} mins</h4>
       </div>
-      <h4 className="font-semibold">{areaName}</h4>
+      <h4 className="font-semibold whitespace-nowrap overflow-hidden">
+        {areaName}
+      </h4>
     </div>
   );
 };

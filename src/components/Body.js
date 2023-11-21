@@ -5,7 +5,6 @@ import { CDN_IMGLINK, RES_LINK } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import UserContexts from "../utils/userContexts";
 import CartContexts from "../utils/CartContexts";
-import OfferCards from "./OfferCards";
 import Footer from "./Footer";
 
 const Body = () => {
@@ -55,15 +54,19 @@ const Body = () => {
   const { loggedUserId, setLoginUser } = useContext(UserContexts);
 
   const toOfferDepth = (offer) => {
-    navigate("/restaurantMenu/" + offer?.entityId);
+    offer?.action?.link.includes("collections")
+      ? navigate("/collectionList/" + offer?.action?.link.substring(35, 40))
+      : navigate("/restaurantMenu/" + offer?.entityId);
   };
 
   const toCollectionPage = (img) => {
     console.log(img);
-    navigate("/collectionList/" + img?.entityId.substring(36, 41));
+    navigate("/collectionList/" + img?.action?.link.substring(35, 40));
   };
 
-  return restaurantList.length == 0 ? (
+  const moveRigt = () => {};
+
+  return restaurantList?.length == 0 ? (
     <ShimmerUI />
   ) : (
     <>
@@ -113,22 +116,37 @@ const Body = () => {
           </div>
         </div>
         <div className="my-6">
-          <h1 className="font-bold text-2xl">Best Offers for You</h1>
-          <div className="flex overflow-x-scroll no-scrollbar my-3">
+          <div className="flex justify-between">
+            <h1 className="font-bold text-2xl">Best Offers for You</h1>
+            <div>
+              <button className="text-3xl ">⬅️</button>
+              <button className="text-3xl pr-6" onClick={() => moveRigt()}>
+                ➡️
+              </button>
+            </div>
+          </div>
+          <div className="flex overflow-x-scroll my-3">
             {offersList?.map((offer) => (
               <img
                 alt="Food Image"
                 key={offer.id}
                 src={CDN_IMGLINK + offer.imageId}
-                className="w-2/4 h-64 mr-4 cursor-pointer"
+                className="w-2/4 h-64 mr-4 pb-2 cursor-pointer"
                 onClick={() => toOfferDepth(offer)}
               />
             ))}
           </div>
         </div>
-        <div className="my-6">
-          <h1 className="font-bold text-2xl">What`s in your mind?</h1>
-          <div className="flex overflow-x-scroll no-scrollbar my-2">
+        <div className="my-8">
+          <div className="flex justify-between">
+            <h1 className="font-bold text-2xl">What`s in your mind?</h1>
+            <div>
+              <button className="text-3xl">⬅️</button>
+              <button className="text-3xl pr-6">➡️</button>
+            </div>
+          </div>
+
+          <div className="flex overflow-x-scroll  my-2">
             {imageCards?.map((img) => (
               <img
                 alt="Food Image"

@@ -14,14 +14,14 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   if (pathState === "cart") {
     return (
-      <div className="flex justify-between px-3 py-3 bg-amber-300 rounded-xl mx-4 my-2">
+      <div className="flex justify-between px-3 py-1 bg-amber-300 rounded-xl mx-4 my-2">
         <div>
           <Link to="/">
             <img src={picture} alt="logo" className=" rounded-full" />
           </Link>
         </div>
-        <div className=" bg-red-400 px-3 rounded-2xl text-center">
-          <h1 className="text-lg font-bold text-white py-4">
+        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center">
+          <h1 className="text-lg font-bold text-white py-2">
             React Food Dilivery App
           </h1>
         </div>
@@ -71,14 +71,14 @@ const Header = () => {
     );
   } else {
     return (
-      <div className="flex justify-between px-3 py-3 bg-amber-300 rounded-xl mx-4 my-2">
+      <div className="flex justify-between px-3 py-1 bg-amber-300 rounded-xl mx-4 my-2">
         <div>
           <Link to="/">
             <img src={picture} alt="logo" className=" rounded-full" />
           </Link>
         </div>
-        <div className=" bg-red-400 px-3 rounded-2xl text-center">
-          <h1 className="text-lg font-bold text-white py-4">
+        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center">
+          <h1 className="text-lg font-bold text-white py-2">
             React Food Dilivery App
           </h1>
         </div>
