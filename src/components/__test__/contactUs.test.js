@@ -36,3 +36,9 @@ test("checking the input box render", () => {
   //Assertion
   expect(textBox.length).not.toBe(2);
 });
+
+test("sapmle", () => {
+  render(<Contact />);
+  const text = screen.getAllByText("Submit");
+});
+

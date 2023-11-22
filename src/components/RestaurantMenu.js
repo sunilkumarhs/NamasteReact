@@ -21,7 +21,8 @@ const RestaurantMenu = () => {
 
   if (resMenuData === null) return <ShimmerUI />;
   const resMenuDetails = resMenuData?.cards[0]?.card?.card?.info;
-
+  console.log(resMenuDetails);
+  console.log(resMenuData);
   const {
     name,
     cuisines,
@@ -52,9 +53,9 @@ const RestaurantMenu = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
     );
-  console.log(licenseInfo);
+
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="w-8/12 mx-auto mt-4">
       <div>
         <hr className=" border-dashed border-2 border-grey-200 mb-4" />
         <button className=" rounded-xl border-dashed border-2 border-gray-400 float-right bg-slate-100 mr-6">
@@ -77,28 +78,18 @@ const RestaurantMenu = () => {
         <h3 className="pr-12 my-2 text-lg">{costForTwoMessage}</h3>
       </div>
       <div className="flex mb-12 ">
-        <button className="rounded-2xl border-dashed border-2 border-gray-400 bg-slate-100 mr-12 mt-2 p-2">
-          <p>
-            <b>
-              {aggregatedDiscountInfo.descriptionList[0].meta.split("|")[0]}
-            </b>
-          </p>
-          <br />
-          <p className="text-xs text-gray-400">
-            {aggregatedDiscountInfo.descriptionList[0].meta.split("|")[1]}
-          </p>
-        </button>
-        <button className="rounded-2xl border-dashed border-2 border-gray-400 bg-slate-100 mr-12 mt-2 p-2">
-          <p>
-            <b>
-              {aggregatedDiscountInfo.descriptionList[1].meta.split("|")[0]}
-            </b>
-          </p>
-          <br />
-          <p className="text-xs text-gray-400">
-            {aggregatedDiscountInfo.descriptionList[1].meta.split("|")[1]}
-          </p>
-        </button>
+        {aggregatedDiscountInfo?.descriptionList?.map((desc) => (
+          <button
+            className="rounded-2xl border-dashed border-2 border-gray-400 bg-slate-100 mr-12 mt-2 p-2"
+            key={desc?.meta}
+          >
+            <p>
+              <b>{desc.meta.split("|")[0]}</b>
+            </p>
+            <br />
+            <p className="text-xs text-gray-400">{desc.meta.split("|")[1]}</p>
+          </button>
+        ))}
       </div>
       {"veg" in resMenuData?.cards[0]?.card?.card?.info ? (
         <p className="text-xl text-green-600">
@@ -147,7 +138,7 @@ const RestaurantMenu = () => {
         ))}
       </div>
       <div className="bg-gray-200 pb-40">
-        {licenseInfo.length != 0 && (
+        {licenseInfo?.length != 0 && (
           <div className="flex px-2 py-1">
             <img
               alt="Food Image"

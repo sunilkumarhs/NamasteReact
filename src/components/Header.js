@@ -14,19 +14,19 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   if (pathState === "cart") {
     return (
-      <div className="flex justify-between px-3 py-1 bg-amber-300 rounded-xl mx-4 my-2">
+      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl fixed ml-3 mt-1 shadow-xl">
         <div>
           <Link to="/">
-            <img src={picture} alt="logo" className=" rounded-full" />
+            <img src={picture} alt="logo" className=" rounded-full mx-2" />
           </Link>
         </div>
-        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center">
+        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center ml-10 mr-[32rem]">
           <h1 className="text-lg font-bold text-white py-2">
             React Food Dilivery App
           </h1>
         </div>
         <div className="">
-          <ul className="flex justify-between py-3 text-lg cursor-pointer font-semibold">
+          <ul className="flex justify-between py-3 text-lg cursor-pointer font-semibold ">
             <li className=" px-10 mx-4">
               <button
                 className={`${
@@ -67,17 +67,17 @@ const Header = () => {
             )}
           </ul>
         </div>
-      </div>
+      </nav>
     );
   } else {
     return (
-      <div className="flex justify-between px-3 py-1 bg-amber-300 rounded-xl mx-4 my-2">
-        <div>
+      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl fixed ml-3 mt-1 shadow-xl">
+        <div className="mx-2">
           <Link to="/">
             <img src={picture} alt="logo" className=" rounded-full" />
           </Link>
         </div>
-        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center">
+        <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center ml-10 mr-40">
           <h1 className="text-lg font-bold text-white py-2">
             React Food Dilivery App
           </h1>
@@ -98,12 +98,12 @@ const Header = () => {
                 </span>
               </button>
             </li>
-            <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+            <li className=" px-6 py-2 mx-2 hover:border-b-4 hover:border-white">
               <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                 Home
               </Link>
             </li>
-            <li className=" px-6 py-2 mx-2 hover:text-xl  hover:border-b-4 hover:border-white">
+            <li className=" px-6 py-2 mx-2  hover:border-b-4 hover:border-white">
               <Link
                 to="/about"
                 style={{ textDecoration: "none", color: "black" }}
@@ -111,7 +111,7 @@ const Header = () => {
                 About Us
               </Link>
             </li>
-            <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+            <li className=" px-6 py-2 mx-2 hover:border-b-4 hover:border-white">
               <Link
                 to="/contact"
                 style={{ textDecoration: "none", color: "black" }}
@@ -119,7 +119,7 @@ const Header = () => {
                 Contact Us
               </Link>
             </li>
-            <li className=" px-6 py-2 mx-2 hover:text-xl hover:border-b-4 hover:border-white">
+            <li className=" px-6 py-2 mx-2 hover:border-b-4 hover:border-white">
               <Link
                 to="/cart"
                 style={{ textDecoration: "none", color: "black" }}
@@ -148,7 +148,7 @@ const Header = () => {
             )}
           </ul>
         </div>
-      </div>
+      </nav>
     );
   }
  

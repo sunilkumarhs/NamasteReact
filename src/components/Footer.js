@@ -12,12 +12,12 @@ const Footer = (props) => {
         </h1>
         <img
           alt="Google Play"
-          src={CDN_IMGLINK + footInfo.androidAppImage}
+          src={CDN_IMGLINK + footInfo?.androidAppImage}
           className="w-52 h-20 mr-8 cursor-pointer"
         />
         <img
           alt="ios app"
-          src={CDN_IMGLINK + footInfo.iosAppImage}
+          src={CDN_IMGLINK + footInfo?.iosAppImage}
           className="w-52 h-20 cursor-pointer"
         />
       </div>

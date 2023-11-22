@@ -33,7 +33,9 @@ const AppLayout = () => {
         >
           <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
             <Header />
-            <Outlet />
+            <div className="pt-20">
+              <Outlet />
+            </div>
           </CartContexts.Provider>
         </UserContexts.Provider>
       </Provider>

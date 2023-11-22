@@ -3,9 +3,9 @@ SF:src\components\Contact.js
 FN:1,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:5,(anonymous_0)
+FNDA:6,(anonymous_0)
 DA:1,1
-DA:2,5
+DA:2,6
 LF:2
 LH:2
 BRF:0
@@ -16,9 +16,9 @@ SF:src\components\sum.js
 FN:1,(anonymous_0)
 FNF:1
 FNH:1
-FNDA:1,(anonymous_0)
+FNDA:2,(anonymous_0)
 DA:1,1
-DA:2,1
+DA:2,2
 LF:2
 LH:2
 BRF:0
