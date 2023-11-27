@@ -1,6 +1,6 @@
 import React from "react";
 import { CDN_IMGLINK } from "../utils/constants";
-import logo from "../../images/icon.png";
+import { logo } from "../assets";
 
 const Footer = (props) => {
   const { footInfo } = props;

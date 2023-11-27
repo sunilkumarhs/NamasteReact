@@ -32,7 +32,6 @@ test("checking the button render by role in the contact component", () => {
 test("checking the input box render", () => {
   render(<Contact />);
   const textBox = screen.getAllByRole("textbox");
-
   //Assertion
   expect(textBox.length).not.toBe(2);
 });
