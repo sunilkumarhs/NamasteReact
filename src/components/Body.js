@@ -189,7 +189,6 @@ const Body = () => {
               <Link
                 to={"/restaurantMenu/" + restaurant?.info?.id}
                 key={restaurant?.info?.id}
-                style={{ textDecoration: "none", color: "black" }}
               >
                 {restaurant?.info?.aggregatedDiscountInfoV3 ? (
                   <PromotedRestaurents resData={restaurant} />

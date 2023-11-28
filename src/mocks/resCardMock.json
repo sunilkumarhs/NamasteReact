@@ -1,0 +1,190 @@
+[
+  {
+    "info": {
+      "id": "464266",
+      "name": "Leon's - Burgers & Wings (Leon Grill)",
+      "cloudinaryImageId": "ceh7zktfjmbka4eo9wzk",
+      "locality": "Ayyappanagar",
+      "areaName": "KR Puram",
+      "costForTwo": "₹300 for two",
+      "cuisines": [
+        "American",
+        "Snacks",
+        "Turkish",
+        "Portuguese",
+        "Continental"
+      ],
+      "avgRating": 4.1,
+      "feeDetails": {
+        "restaurantId": "464266",
+        "fees": [
+          {
+            "name": "BASE_DISTANCE",
+            "fee": 3200
+          },
+          {
+            "name": "BASE_TIME"
+          },
+          {
+            "name": "ANCILLARY_SURGE_FEE"
+          }
+        ],
+        "totalFee": 3200
+      },
+      "parentId": "371281",
+      "avgRatingString": "4.1",
+      "totalRatingsString": "5K+",
+      "sla": {
+        "deliveryTime": 25,
+        "lastMileTravel": 2.8,
+        "serviceability": "SERVICEABLE",
+        "slaString": "25 mins",
+        "lastMileTravelString": "2.8 km",
+        "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+        "nextCloseTime": "2023-11-29 02:00:00",
+        "opened": true
+      },
+      "badges": {},
+      "isOpen": true,
+      "aggregatedDiscountInfoV2": {},
+      "type": "F",
+      "badgesV2": {
+        "entityBadges": {
+          "imageBased": {},
+          "textBased": {},
+          "textExtendedBadges": {}
+        }
+      },
+      "orderabilityCommunication": {
+        "title": {},
+        "subTitle": {},
+        "message": {},
+        "customIcon": {}
+      },
+      "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {},
+          "video": {}
+        }
+      },
+      "reviewsSummary": {},
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+      "context": "seo-data-e7ad454d-8724-4418-8aa6-37934dad797a"
+    },
+    "cta": {
+      "link": "https://www.swiggy.com/restaurants/leons-burgers-and-wings-leon-grill-ayyappanagar-kr-puram-bangalore-464266",
+      "text": "RESTAURANT_MENU",
+      "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+  },
+  {
+    "info": {
+      "id": "409498",
+      "name": "NH1 Bowls - Highway To North",
+      "cloudinaryImageId": "94654fdf308764cd0faf83dba35bcdc3",
+      "locality": "SUBASH NAGAR",
+      "areaName": "Battarahalli",
+      "costForTwo": "₹250 for two",
+      "cuisines": ["North Indian", "Punjabi", "Home Food"],
+      "avgRating": 4.2,
+      "feeDetails": {
+        "restaurantId": "409498",
+        "fees": [
+          {
+            "name": "BASE_DISTANCE",
+            "fee": 3200
+          },
+          {
+            "name": "BASE_TIME"
+          },
+          {
+            "name": "ANCILLARY_SURGE_FEE"
+          }
+        ],
+        "totalFee": 3200
+      },
+      "parentId": "22452",
+      "avgRatingString": "4.2",
+      "totalRatingsString": "100+",
+      "sla": {
+        "deliveryTime": 25,
+        "lastMileTravel": 0.4,
+        "serviceability": "SERVICEABLE",
+        "slaString": "20-30 mins",
+        "lastMileTravelString": "0.4 km",
+        "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+        "nextCloseTime": "2023-11-28 23:00:00",
+        "opened": true
+      },
+      "badges": {
+        "textExtendedBadges": [
+          {
+            "iconId": "guiltfree/GF_Logo_android_3x",
+            "shortDescription": "options available",
+            "fontColor": "#7E808C"
+          }
+        ]
+      },
+      "isOpen": true,
+      "type": "F",
+      "badgesV2": {
+        "entityBadges": {
+          "imageBased": {},
+          "textBased": {},
+          "textExtendedBadges": {
+            "badgeObject": [
+              {
+                "attributes": {
+                  "description": "",
+                  "fontColor": "#7E808C",
+                  "iconId": "guiltfree/GF_Logo_android_3x",
+                  "shortDescription": "options available"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "aggregatedDiscountInfoV3": {
+        "header": "50% OFF",
+        "subHeader": "UPTO ₹100"
+      },
+      "orderabilityCommunication": {
+        "title": {},
+        "subTitle": {},
+        "message": {},
+        "customIcon": {}
+      },
+      "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {},
+          "video": {}
+        }
+      },
+      "reviewsSummary": {},
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+      "context": "seo-data-be9f5033-28f6-4694-b3d4-f0068b1fc943"
+    },
+    "cta": {
+      "link": "https://www.swiggy.com/restaurants/nh1-bowls-highway-to-north-subash-nagar-battarahalli-bangalore-409498",
+      "text": "RESTAURANT_MENU",
+      "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+  }
+]

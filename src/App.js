@@ -26,13 +26,16 @@ const AppLayout = () => {
     setLoginUser(data);
   }, []);
   return (
-    <div className="">
+    <div>
       <Provider store={appStore}>
         <UserContexts.Provider
           value={{ loggedUserId: loginUser, setLoginUser }}
         >
           <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
-            <Header />
+            <div className="fixed">
+              <Header />
+            </div>
+
             <div className="pt-20">
               <Outlet />
             </div>

@@ -1,6 +1,7 @@
 import { CDN_IMGLINK } from "../utils/constants";
 const RestaurentCards = (props) => {
   const { resData } = props;
+  // console.log(resData);
   const { cloudinaryImageId, name, cuisines, avgRating, areaName, sla } =
     resData?.info;
   return (
@@ -33,7 +34,7 @@ export const withPromotedLabel = (RestaurentCards) => {
     const { aggregatedDiscountInfoV3 } = resData?.info;
     return (
       <div>
-        <label className=" absolute m-2 p-2 bg-slate-700 text-white">
+        <label className="absolute m-2 p-2 bg-slate-700 text-white">
           {aggregatedDiscountInfoV3.header}{" "}
           {aggregatedDiscountInfoV3.discountTag}
         </label>

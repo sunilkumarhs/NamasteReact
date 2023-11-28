@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { logo } from "../assets";
+// import { logo } from "../assets";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContexts from "../utils/userContexts";
 import { useSelector } from "react-redux";
 import CartContexts from "../utils/CartContexts";
+
 
 const Header = () => {
   const [loginCredential, setLoginCredential] = useState("SignIn");
@@ -14,10 +15,10 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   if (pathState === "cart") {
     return (
-      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl fixed ml-3 mt-1 shadow-xl">
+      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl ml-3 mt-1 shadow-xl">
         <div>
           <Link to="/">
-            <img src={logo} alt="logo" className=" rounded-full mx-2" />
+            {/* <img src={logo} alt="logo" className=" rounded-full mx-2" /> */}
           </Link>
         </div>
         <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center ml-10 mr-[32rem]">
@@ -71,10 +72,10 @@ const Header = () => {
     );
   } else {
     return (
-      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl fixed ml-3 mt-1 shadow-xl">
+      <nav className="flex px-3 py-1 bg-amber-300 rounded-xl ml-3 mt-1 shadow-xl">
         <div className="mx-2">
           <Link to="/">
-            <img src={logo} alt="logo" className=" rounded-full" />
+            {/* <img src={logo} alt="logo" className=" rounded-full" /> */}
           </Link>
         </div>
         <div className=" bg-red-400 px-3 my-2 rounded-2xl text-center ml-10 mr-40">
