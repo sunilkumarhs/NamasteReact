@@ -32,10 +32,7 @@ const AppLayout = () => {
           value={{ loggedUserId: loginUser, setLoginUser }}
         >
           <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
-            <div className="fixed">
-              <Header />
-            </div>
-
+            <Header />
             <div className="pt-20">
               <Outlet />
             </div>
