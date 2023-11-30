@@ -197,6 +197,16 @@ const config = {
   //   "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
   //     "<rootDir>/fileTransformer.js",
   // },
+  moduleNameMapper: {
+    "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
+    "^[./a-zA-Z0-9$_-]+\\.png$": "<rootDir>/src/assets/index.js",
+    // "module_name_(.*)": "<rootDir>/substituted_module_$1.js",
+    // "assets/(.*)": [
+    //   "<rootDir>/images/$1",
+    //   "<rootDir>/photos/$1",
+    //   "<rootDir>/recipes/$1",
+    // ],
+  },
 };
 
 module.exports = config;

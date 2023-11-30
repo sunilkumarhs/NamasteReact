@@ -1,5 +1,5 @@
 import RestaurentCards, { withPromotedLabel } from "./RestaurentCards";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { CDN_IMGLINK, RES_LINK } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,6 +17,8 @@ const Body = () => {
   const [searchRes, setSearchRes] = useState("");
   const { setCurPath } = useContext(CartContexts);
   const navigate = useNavigate();
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
 
   useEffect(() => {
     fetchApiData();
@@ -64,7 +66,13 @@ const Body = () => {
     navigate("/collectionList/" + img?.action?.link.substring(35, 40));
   };
 
-  const moveRigt = () => {};
+  const scrollOffers = (scrollOffset) => {
+    ref1.current.scrollLeft += scrollOffset;
+  };
+
+  const scrollImages = (scrollOffset) => {
+    ref2.current.scrollLeft += scrollOffset;
+  };
 
   return restaurantList?.length == 0 ? (
     <ShimmerUI />
@@ -72,17 +80,6 @@ const Body = () => {
     <>
       <div className="mx-36 px-2 py-4">
         <div className="flex m-2 p-2 justify-between">
-          <button
-            className=" cursor-pointer text-lg bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
-            onClick={() => {
-              const filteredList = restaurantList.filter(
-                (res) => res?.info?.avgRating > 4
-              );
-              setRestaurantList(filteredList);
-            }}
-          >
-            Top Rated
-          </button>
           <div>
             <label className="font-semibold text-lg">UserName :</label>
             <input
@@ -119,13 +116,18 @@ const Body = () => {
           <div className="flex justify-between">
             <h1 className="font-bold text-2xl">Best Offers for You</h1>
             <div>
-              <button className="text-3xl ">⬅️</button>
-              <button className="text-3xl pr-6" onClick={() => moveRigt()}>
+              <button className="text-3xl" onClick={() => scrollOffers(-200)}>
+                ⬅️
+              </button>
+              <button
+                className="text-3xl pr-6"
+                onClick={() => scrollOffers(200)}
+              >
                 ➡️
               </button>
             </div>
           </div>
-          <div className="flex overflow-x-scroll my-3">
+          <div className="flex overflow-x-scroll my-3 no-scrollbar" ref={ref1}>
             {offersList?.map((offer) => (
               <img
                 alt="Food Image"
@@ -141,12 +143,19 @@ const Body = () => {
           <div className="flex justify-between">
             <h1 className="font-bold text-2xl">What`s in your mind?</h1>
             <div>
-              <button className="text-3xl">⬅️</button>
-              <button className="text-3xl pr-6">➡️</button>
+              <button className="text-3xl" onClick={() => scrollImages(-100)}>
+                ⬅️
+              </button>
+              <button
+                className="text-3xl pr-6"
+                onClick={() => scrollImages(100)}
+              >
+                ➡️
+              </button>
             </div>
           </div>
 
-          <div className="flex overflow-x-scroll  my-2">
+          <div className="flex overflow-x-scroll no-scrollbar my-2" ref={ref2}>
             {imageCards?.map((img) => (
               <img
                 alt="Food Image"
@@ -184,6 +193,20 @@ const Body = () => {
           <h1 className="font-bold text-2xl">
             Restaurants with online food delivery in Bangalore
           </h1>
+          <div className="my-2">
+            <button
+              className=" cursor-pointer text-lg bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
+              onClick={() => {
+                const filteredList = restaurantList.filter(
+                  (res) => res?.info?.avgRating > 4
+                );
+                setRestaurantList(filteredList);
+              }}
+            >
+              Top Rated
+            </button>
+          </div>
+
           <div className=" flex flex-wrap justify-between">
             {restaurantList?.map((restaurant) => (
               <Link
