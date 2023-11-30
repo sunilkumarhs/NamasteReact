@@ -193,7 +193,7 @@ const Body = () => {
           <h1 className="font-bold text-2xl">
             Restaurants with online food delivery in Bangalore
           </h1>
-          <div className="my-2">
+          <div className="my-2 ">
             <button
               className=" cursor-pointer text-lg bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
               onClick={() => {
