@@ -15,14 +15,16 @@ const Body = () => {
   const [topRestaurant, setTopRestaurant] = useState([]);
   const [footerInfo, setFooterInfo] = useState([]);
   const [searchRes, setSearchRes] = useState("");
-  const { setCurPath } = useContext(CartContexts);
+  const { pathState, setCurPath } = useContext(CartContexts);
   const navigate = useNavigate();
   const ref1 = useRef(null);
   const ref2 = useRef(null);
 
+  const PromotedRestaurents = withPromotedLabel(RestaurentCards);
+
   useEffect(() => {
     fetchApiData();
-    setCurPath("home");
+    // setCurPath("home");
   }, []);
 
   const fetchApiData = async () => {
@@ -50,8 +52,6 @@ const Body = () => {
     );
   };
   // const coll = imageCards[0].entityId.substring(36, 41);
-
-  const PromotedRestaurents = withPromotedLabel(RestaurentCards);
 
   const { loggedUserId, setLoginUser } = useContext(UserContexts);
 
@@ -93,6 +93,7 @@ const Body = () => {
               type="search"
               className="border-2 rounded-full mx-2 px-4 py-2 bg-slate-200 border-none text-lg"
               placeholder="Search Restaurants"
+              data-testid="searchInput"
               value={searchRes}
               onChange={(e) => setSearchRes(e.target.value)}
             />
@@ -100,7 +101,7 @@ const Body = () => {
               type="button"
               className=" text-lg font-semibold text-white bg-sky-500 hover:bg-sky-700 p-2 rounded-full "
               onClick={() => {
-                const filterRes = realRestaurantList.filter((res) =>
+                const filterRes = realRestaurantList?.filter((res) =>
                   res?.info?.name
                     .toLowerCase()
                     .includes(searchRes.toLowerCase())
@@ -198,7 +199,7 @@ const Body = () => {
               className=" cursor-pointer text-lg bg-teal-500 rounded-full p-2  hover:bg-teal-700 text-white font-semibold"
               onClick={() => {
                 const filteredList = restaurantList.filter(
-                  (res) => res?.info?.avgRating > 4
+                  (res) => res?.info?.avgRating >= 4
                 );
                 setRestaurantList(filteredList);
               }}
@@ -209,16 +210,15 @@ const Body = () => {
 
           <div className=" flex flex-wrap justify-between">
             {restaurantList?.map((restaurant) => (
-              <Link
-                to={"/restaurantMenu/" + restaurant?.info?.id}
-                key={restaurant?.info?.id}
-              >
-                {restaurant?.info?.aggregatedDiscountInfoV3 ? (
-                  <PromotedRestaurents resData={restaurant} />
-                ) : (
-                  <RestaurentCards resData={restaurant} />
-                )}
-              </Link>
+              <div key={restaurant?.info?.id} data-testid="resCard">
+                <Link to={"/restaurantMenu/" + restaurant?.info?.id}>
+                  {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+                    <PromotedRestaurents resData={restaurant} />
+                  ) : (
+                    <RestaurentCards resData={restaurant} />
+                  )}
+                </Link>
+              </div>
             ))}
           </div>
         </div>

@@ -24,6 +24,7 @@ const AppLayout = () => {
   useEffect(() => {
     const data = "Sunil Kumar";
     setLoginUser(data);
+    setCurPath("home");
   }, []);
   return (
     <div>
