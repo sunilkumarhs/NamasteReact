@@ -15,7 +15,7 @@ const Body = () => {
   const [topRestaurant, setTopRestaurant] = useState([]);
   const [footerInfo, setFooterInfo] = useState([]);
   const [searchRes, setSearchRes] = useState("");
-  const { pathState, setCurPath } = useContext(CartContexts);
+  const { setCurPath } = useContext(CartContexts);
   const navigate = useNavigate();
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -24,7 +24,7 @@ const Body = () => {
 
   useEffect(() => {
     fetchApiData();
-    // setCurPath("home");
+    setCurPath("home");
   }, []);
 
   const fetchApiData = async () => {

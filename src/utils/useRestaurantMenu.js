@@ -9,6 +9,7 @@ const useRestaurantMenu = (resId) => {
   const fetchApiData = async () => {
     const data = await fetch(RESMENU_LINK + resId);
     const jsonData = await data.json();
+    console.log(jsonData);
     setResMenuData(jsonData.data);
   };
   return resMenuData;

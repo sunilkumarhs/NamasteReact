@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import MOCK_DATA from "../../mocks/mockResListData.json";
 import { act } from "react-dom/test-utils";
 import "@testing-library/jest-dom";
+import CartContexts from "../../utils/CartContexts";
 
 global.fetch = jest.fn(() => {
   return Promise.resolve({
@@ -13,11 +14,19 @@ global.fetch = jest.fn(() => {
   });
 });
 
+let curPath;
+
+const setCurPath = () => {
+  curPath = "home";
+};
+
 it("Should check the resCards for pizza input text", async () => {
   await act(async () => {
     render(
       <BrowserRouter>
-        <Body />
+        <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
+          <Body />
+        </CartContexts.Provider>
       </BrowserRouter>
     );
   });
@@ -42,7 +51,9 @@ it("Should check for the top rated button", async () => {
   await act(async () => {
     render(
       <BrowserRouter>
-        <Body />
+        <CartContexts.Provider value={{ pathState: curPath, setCurPath }}>
+          <Body />
+        </CartContexts.Provider>
       </BrowserRouter>
     );
   });

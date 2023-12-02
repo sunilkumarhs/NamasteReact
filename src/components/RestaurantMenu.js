@@ -21,8 +21,8 @@ const RestaurantMenu = () => {
 
   if (resMenuData === null) return <ShimmerUI />;
   const resMenuDetails = resMenuData?.cards[0]?.card?.card?.info;
-  console.log(resMenuDetails);
-  console.log(resMenuData);
+  // console.log(resMenuDetails);
+  // console.log(resMenuData);
   const {
     name,
     cuisines,
