@@ -39,7 +39,6 @@ const Cart = () => {
   }, []);
   return (
     <>
-      {/* <CartHeader /> */}
       {cartItems.length === 0 ? (
         <div className="text-center m-2 p-2">
           <h1>Please add the food items to show !!</h1>
@@ -105,7 +104,11 @@ const Cart = () => {
                 totalAmount = Math.round(total + deliveryFee + 3 + gstCost);
 
                 return (
-                  <div key={item.id} className="flex justify-between py-3">
+                  <div
+                    data-testid="itemsAdded"
+                    key={item.id}
+                    className="flex justify-between py-3"
+                  >
                     <div className="flex mr-2">
                       <div
                         className={`${

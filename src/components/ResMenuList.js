@@ -28,11 +28,11 @@ const ResMenuList = ({
         className="flex justify-between py-2 cursor-pointer"
         onClick={handleClick}
       >
-        {!displayTitle && (
-          <h2 className="font-bold text-xl mx-4">
-            {resList?.title} ({itCard?.length})
-          </h2>
-        )}
+        {/* {!displayTitle && ( */}
+        <h2 className="font-bold text-xl mx-4">
+          {resList?.title} ({itCard?.length})
+        </h2>
+        {/* )} */}
         <span className=" text-2xl px-4">{!displayTitle ? "⬇️" : "⬆️"}</span>
       </div>
       {showList && <CardsList data={itCard} resInfo={resDetails} />}

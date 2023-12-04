@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { addItem, addRes, clearItems, removeRes } from "../utils/cartSlice";
 import { FOOD_IMG } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +8,11 @@ const CardsList = (props) => {
   const { resInfo } = props;
   const dispatch = useDispatch();
   const cartResDeatils = useSelector((store) => store.cart.resDetails);
+  const cartItemsList = useSelector((store) => store.cart.items);
   console.log(cartResDeatils);
-
+  // const [addBtn, setAddBtn] = useState("ADD");
+  let addBtn = "ADD";
+  let Ref = true;
   const handleAddItems = (itemInfo) => {
     if (cartResDeatils.length != 0) {
       if (cartResDeatils[0].name != resInfo.name) {
@@ -20,8 +24,12 @@ const CardsList = (props) => {
     if (cartResDeatils.length === 0) {
       dispatch(addRes(resInfo));
     }
+    cartItemsList.map((item) => {
+      Ref = true;
+      if (item.id === itemInfo.id) Ref = false;
+    });
 
-    dispatch(addItem(itemInfo));
+    Ref === true && dispatch(addItem(itemInfo));
   };
 
   return (
@@ -31,6 +39,7 @@ const CardsList = (props) => {
         const itemInfo = { itemCount: 1, ...listItem };
         return (
           <div
+            data-testid="foodItems"
             key={listItem.id}
             className="bg-gray-200  mx-4 my-4 p-3 border-none rounded-2xl flex justify-between shadow-xl"
           >
@@ -62,7 +71,7 @@ const CardsList = (props) => {
                 } absolute py-1 px-6 bg-white text-lg text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
                 onClick={() => handleAddItems(itemInfo)}
               >
-                ADD
+                {addBtn}
               </button>
               <button className="rounded-2xl border-dashed border-2  bg-transparent w-36">
                 {" "}
