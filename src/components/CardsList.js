@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { addItem, addRes, clearItems, removeRes } from "../utils/cartSlice";
 import { FOOD_IMG } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +8,7 @@ const CardsList = (props) => {
   const dispatch = useDispatch();
   const cartResDeatils = useSelector((store) => store.cart.resDetails);
   const cartItemsList = useSelector((store) => store.cart.items);
-  console.log(cartResDeatils);
-  // const [addBtn, setAddBtn] = useState("ADD");
-  let addBtn = "ADD";
+  const cartItemsIds = cartItemsList.map((item) => item.id);
   let Ref = true;
   const handleAddItems = (itemInfo) => {
     if (cartResDeatils.length != 0) {
@@ -71,7 +68,11 @@ const CardsList = (props) => {
                 } absolute py-1 px-6 bg-white text-lg text-green-400 rounded-xl ml-9 shadow-lg cursor-pointer`}
                 onClick={() => handleAddItems(itemInfo)}
               >
-                {addBtn}
+                {cartItemsIds.includes(itemInfo.id) ? (
+                  <span className="text-red-500">ADDED</span>
+                ) : (
+                  "ADD"
+                )}
               </button>
               <button className="rounded-2xl border-dashed border-2  bg-transparent w-36">
                 {" "}
