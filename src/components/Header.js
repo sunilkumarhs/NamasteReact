@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { logo } from "../assets";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContexts from "../utils/userContexts";
+import UserContexts from "../utils/UserContexts";
 import { useSelector } from "react-redux";
 import CartContexts from "../utils/CartContexts";
 

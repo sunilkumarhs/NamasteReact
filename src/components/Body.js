@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import ShimmerUI from "./ShimmerUI";
 import { CDN_IMGLINK, RES_LINK } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
-import UserContexts from "../utils/userContexts";
+import UserContexts from "../utils/UserContexts";
 import CartContexts from "../utils/CartContexts";
 import Footer from "./Footer";
 
