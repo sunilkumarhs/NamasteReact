@@ -20,7 +20,7 @@ const RestaurantMenu = () => {
   }, []);
 
   if (resMenuData === null) return <ShimmerUI />;
-  const resMenuDetails = resMenuData?.cards[0]?.card?.card?.info;
+  const resMenuDetails = resMenuData?.cards[2]?.card?.card?.info;
   // console.log(resMenuDetails);
   // console.log(resMenuData);
   const {
@@ -36,19 +36,19 @@ const RestaurantMenu = () => {
   } = resMenuDetails;
 
   const cardItemsList =
-    resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resMenuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
   const address =
-    resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resMenuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
     );
   const licenseInfo =
-    resMenuData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resMenuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
@@ -91,7 +91,7 @@ const RestaurantMenu = () => {
           </button>
         ))}
       </div>
-      {"veg" in resMenuData?.cards[0]?.card?.card?.info ? (
+      {"veg" in resMenuData?.cards[2]?.card?.card?.info ? (
         <p className="text-xl text-green-600">
           <b>Pure Veg</b>
         </p>

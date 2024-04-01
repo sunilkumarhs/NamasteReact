@@ -41,7 +41,7 @@ const Body = () => {
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    setFooterInfo(jsonData?.data?.cards[10]?.card?.card);
+    setFooterInfo(jsonData?.data?.cards[9]?.card?.card);
     setRealRestaurantList(
       jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -115,7 +115,7 @@ const Body = () => {
         </div>
         <div className="my-6">
           <div className="flex justify-between">
-            <h1 className="font-bold text-2xl">Best Offers for You</h1>
+            <h1 className="font-bold text-2xl">What`s in your mind?</h1>
             <div>
               <button className="text-3xl" onClick={() => scrollOffers(-200)}>
                 ⬅️
@@ -140,7 +140,7 @@ const Body = () => {
             ))}
           </div>
         </div>
-        <div className="my-8">
+        {/* <div className="my-8">
           <div className="flex justify-between">
             <h1 className="font-bold text-2xl">What`s in your mind?</h1>
             <div>
@@ -167,7 +167,7 @@ const Body = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
         <hr className="border-2 border-slate-200 mt-2" />
         <div className="my-6">
           <h1 className="font-bold text-2xl">
